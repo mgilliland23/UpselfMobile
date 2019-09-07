@@ -7,10 +7,12 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
+  Animated,
+  Easing,
 } from 'react-native';
-// import Logo from '../../assets/images/logo_upself.svg';
-const win = Dimensions.get('window');
+import {createStackNavigator, createAppContainer} from 'react-navigation';
 
+const win = Dimensions.get('window');
 const styles = StyleSheet.create({
   background: {
     flex: 1,
@@ -42,7 +44,12 @@ const styles = StyleSheet.create({
   },
   upsy: {
     flex: 1,
-    width: '60%',
+    width: '80%',
+    alignSelf: 'center',
+  },
+  upsyImg: {
+    flex: 1,
+    width: '70%',
     alignSelf: 'center',
   },
   getStartedText: {
@@ -53,6 +60,40 @@ const styles = StyleSheet.create({
 });
 
 export default class Landing extends Component {
+  constructor(props) {
+    super(props);
+    this.animatedValue = new Animated.Value(0);
+  }
+
+  handleAnimation = () => {
+    // A loop is needed for continuous animation
+    Animated.loop(
+      // Animation consists of a sequence of steps
+      Animated.sequence([
+        // start rotation in one direction (only half the time is needed)
+        Animated.timing(this.animatedValue, {
+          toValue: 1.0,
+          duration: 150,
+          easing: Easing.linear,
+          useNativeDriver: true,
+        }),
+        // rotate in other direction, to minimum value (= twice the duration of above)
+        Animated.timing(this.animatedValue, {
+          toValue: -1.0,
+          duration: 300,
+          easing: Easing.linear,
+          useNativeDriver: true,
+        }),
+        // return to begin position
+        Animated.timing(this.animatedValue, {
+          toValue: 0.0,
+          duration: 150,
+          easing: Easing.linear,
+          useNativeDriver: true,
+        }),
+      ]),
+    ).start();
+  };
   _onPressUpsy() {
     alert('You tapped the button!');
   }
@@ -74,9 +115,11 @@ export default class Landing extends Component {
             {' '}
             I'm here to make your day better!{' '}
           </Text>
-          <TouchableOpacity onPress={this._onPressUpsy} style={styles.upsy}>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('IntroChat')}
+            style={styles.upsy}>
             <Image
-              style={styles.upsy}
+              style={styles.upsyImg}
               source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
               resizeMode={'contain'}
             />
