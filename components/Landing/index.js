@@ -116,7 +116,7 @@ export default class Landing extends Component {
             I'm here to make your day better!{' '}
           </Text>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('IntroChat')}
+            onPress={() => this.props.navigation.navigate('Chat')}
             style={styles.upsy}>
             <Image
               style={styles.upsyImg}

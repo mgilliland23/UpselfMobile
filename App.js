@@ -8,15 +8,11 @@
 
 import React, {Fragment, Component} from 'react';
 import Landing from './components/Landing';
-import IntroChat from './components/IntroChat';
+import Chat from './components/Chat';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
-class HomeScreen extends React.Component {
-  render() {
-    return <Landing />;
-  }
-}
+console.disableYellowBox = true;
 
 const MainNavigator = createStackNavigator(
   {
@@ -24,8 +20,8 @@ const MainNavigator = createStackNavigator(
       screen: Landing,
     },
     //Landing: Landing,
-    IntroChat: {
-      screen: IntroChat,
+    Chat: {
+      screen: Chat,
     },
   },
   {
