@@ -19,7 +19,7 @@ function getMessageAnalysis(message) {
 function getMessageJaro(message) {
   console.log('making api request...');
   return axios
-    .post('http://localhost:80/api/jaroMessage', {
+    .post('https://upself-web.herokuapp.com/api/jaroMessage', {
       params: {userMessage: message},
     })
     .then(
