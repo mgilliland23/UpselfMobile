@@ -3,7 +3,7 @@ import {Button} from 'react-native';
 import {GiftedChat} from 'react-native-gifted-chat';
 import API from '../../utils/API';
 
-import logo from '../../assets/images/upsy_emo/upsy1_emo3.png';
+import logo from '../../assets/images/check/check1.png';
 
 export default class Chat extends React.Component {
   constructor(props) {
