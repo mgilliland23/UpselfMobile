@@ -10,9 +10,6 @@ export default class Chat extends React.Component {
     super(props);
   }
   static navigationOptions = ({navigation}) => {
-    const {params} = navigation.state;
-    console.log('navigation', navigation);
-
     return {
       title: 'Chat with Upsy',
       headerLeft: (
