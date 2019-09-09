@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-//import "./Bounce_upsy.css";
+import StressTextInput from '../StressTextInput';
 import {
   StyleSheet,
   View,
   Text,
-  Image,
+  ImageBackground,
   Dimensions,
-  TouchableOpacity,
   Animated,
   Easing,
 } from 'react-native';
@@ -16,45 +15,30 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     width: win.width,
-    //height: win.height,
-    padding: 1,
-    //alignSelf: 'flex-start',
     backgroundColor: '#f2f2f2',
-  },
-  logo: {
-    flex: 1,
-    width: '80%',
-    alignSelf: 'center',
-    marginTop: 100,
   },
   padding: {
     flex: 1,
     paddingHorizontal: 24,
   },
-  helloText: {
-    textAlign: 'center',
-    fontSize: 34,
-  },
-  missionText: {
-    paddingTop: 6,
-    textAlign: 'center',
-    fontSize: 20,
-    marginBottom: 50,
-  },
-  upsy: {
+  circle: {
     flex: 1,
-    width: '80%',
+    width: '100%',
     alignSelf: 'center',
-  },
-  upsyImg: {
-    flex: 1,
-    width: '70%',
-    alignSelf: 'center',
+    marginBottom: 175,
   },
   getStartedText: {
     fontSize: 18,
     textAlign: 'center',
-    marginBottom: 100,
+    marginBottom: 0,
+    marginTop: 50,
+  },
+  stressBall: {
+    position: 'absolute',
+    paddingHorizontal: 30,
+    top: 200,
+    width: '100%',
+    justifyContent: 'center',
   },
 });
 
@@ -72,7 +56,6 @@ export default class Landing extends Component {
     super(props);
     this.animatedValue = new Animated.Value(0);
   }
-
   handleAnimation = () => {
     // A loop is needed for continuous animation
     Animated.loop(
@@ -102,40 +85,23 @@ export default class Landing extends Component {
       ]),
     ).start();
   };
-  _onPressUpsy() {
-    alert('You tapped the button!');
-  }
 
   render() {
     return (
       <View style={styles.background}>
-        {/* <View style={styles.logoPadding}> */}
-
-        {/* </View> */}
         <View style={styles.padding}>
-          <Image
-            style={styles.logo}
-            source={require('../../assets/images/logo_upself.png')}
-            resizeMode={'contain'}
-          />
-          <Text style={styles.helloText}> Hey I'm Upsy! </Text>
-          <Text style={styles.missionText}>
-            {' '}
-            I'm here to make your day better!{' '}
-          </Text>
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('Chat')}
-            style={styles.upsy}>
-            <Image
-              style={styles.upsyImg}
-              source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
-              resizeMode={'contain'}
-            />
-          </TouchableOpacity>
           <Text style={styles.getStartedText}>
             {' '}
-            Click on me to get started!{' '}
+            Type in something that is causing you stress{' '}
           </Text>
+          <ImageBackground
+            style={styles.circle}
+            source={require('../../assets/images/circle.png')}
+            resizeMode={'contain'}>
+            <View style={styles.stressBall}>
+              <StressTextInput />
+            </View>
+          </ImageBackground>
         </View>
       </View>
     );

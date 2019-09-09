@@ -1,10 +1,34 @@
 import React from 'react';
+import {Button} from 'react-native';
 import {GiftedChat} from 'react-native-gifted-chat';
 import API from '../../utils/API';
 
 import logo from '../../assets/images/upsy_emo/upsy1_emo3.png';
 
 export default class Chat extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  static navigationOptions = ({navigation}) => {
+    return {
+      title: 'Chat with Upsy',
+      headerLeft: (
+        <Button
+          onPress={() => navigation.navigate('DeStress')}
+          title="Info"
+          color="#fff"
+        />
+      ),
+      headerStyle: {
+        backgroundColor: '#6bccf3',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    };
+  };
+
   state = {
     messages: [],
   };
@@ -27,6 +51,7 @@ export default class Chat extends React.Component {
     });
   }
 
+  //Get a response from upsy using the upself web API
   getUpsyResponse = () => {
     console.log(this.state.messages[0]);
     //Pass the user's message to the upself API and append Upsy's response to the chat
@@ -37,7 +62,7 @@ export default class Chat extends React.Component {
         let upsyMessage = {
           _id: Math.round(Math.random() * 1000000),
           text: response,
-          createdAt: new Date(Date.UTC(2016, 5, 11, 17, 20, 0)),
+          createdAt: new Date(),
           user: {
             _id: 2,
             name: 'Upsy',
@@ -63,6 +88,7 @@ export default class Chat extends React.Component {
         messages: GiftedChat.append(previousState.messages, messages),
       }),
       () => {
+        //Get response from Upsy
         this.getUpsyResponse();
       },
     );
