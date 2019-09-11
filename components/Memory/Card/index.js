@@ -39,24 +39,28 @@ export default class Card extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { value: false };
+        this.state = {
+            showing: false
+        };
+
     }
 
 
 
 
     render() {
+
         return (
             <View style={styles.container}>
                 {
                     // Pass any View or Component inside the curly bracket.
                     // Here the ? Question Mark represent the ternary operator.
 
-                    (!this.state.value) ? (
+                    (this.state.showing==false && this.props.matched == false) ? (
                         <TouchableOpacity
                             // onPress={() => this.setState({ isHidden: true })}
                             // onPress={() => alert("test1")}
-                            onPress={() => this.setState({value: true})}
+                            onPress={() => [this.setState({ showing: true }),console.log(this.props.imageUri)]}
                             // onPress={() =>
                             //     this.setState({
                             //         isHidden: false
@@ -78,7 +82,7 @@ export default class Card extends Component {
                                 // onPress={() => this.setState({ isHidden: false })}
                                 // onPress={() => alert("test2")}
                                 // onPress={() => value = false}
-                                onPress={() => this.setState({value: false})}
+                                onPress={() => this.setState({ showing: false })}
                                 // onPress={() => this.setState({ isHidden: false })}
                                 // onPress={() => this.props.action(false)}
                                 style={styles.click}>
