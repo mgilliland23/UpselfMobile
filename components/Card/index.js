@@ -71,7 +71,7 @@ export default class Card extends Component {
                             style={styles.click}>
                             <Image
                                 style={[styles.click]}
-                                source={require('../../../assets/images/upsy_emo/upsy1_emo3.png')}
+                                source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
                                 resizeMode={'contain'}
                             />
                         </TouchableOpacity>

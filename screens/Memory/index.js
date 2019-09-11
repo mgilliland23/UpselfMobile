@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row, Grid } from "react-native-easy-grid";
-import Card from './Card';
+import Card from '../../components/Card';
 
 //import "./Bounce_upsy.css";
 import {
