@@ -7,9 +7,10 @@
  */
 
 import React, {Fragment, Component} from 'react';
-import Landing from './components/Landing';
-import Chat from './components/Chat';
-import DeStress from './components/DeStress';
+import Landing from './screens/Landing';
+import Chat from './screens/Chat';
+import DeStress from './screens/DeStress';
+import Menu from './screens/Menu';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
@@ -27,6 +28,9 @@ const MainNavigator = createStackNavigator(
     },
     DeStress: {
       screen: DeStress,
+    },
+    Menu: {
+      screen: Menu,
     },
   },
   {
