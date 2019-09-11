@@ -29,9 +29,9 @@ const MainNavigator = createStackNavigator(
     DeStress: {
       screen: DeStress,
     },
-    Menu: {
-      screen: Menu,
-    },
+    // Menu: {
+    //   screen: Menu,
+    // },
   },
   {
     //TODO: Check if this is the first time the user has used this app,
