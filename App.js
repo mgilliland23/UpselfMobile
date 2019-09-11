@@ -10,6 +10,7 @@ import React, {Fragment, Component} from 'react';
 import Landing from './components/Landing';
 import Chat from './components/Chat';
 import DeStress from './components/DeStress';
+import Memory from './components/Memory';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
@@ -28,11 +29,14 @@ const MainNavigator = createStackNavigator(
     DeStress: {
       screen: DeStress,
     },
+    Memory: {
+      screen: Memory,
+    },
   },
   {
     //TODO: Check if this is the first time the user has used this app,
     //if so, initial route should be Landing, else initial route should be Home
-    initialRouteName: 'Landing',
+    initialRouteName: 'Memory',
   },
 );
 
