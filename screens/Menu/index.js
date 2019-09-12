@@ -144,7 +144,9 @@ export default class Landing extends Component {
           }}>
           <View
             style={{
-              flex: 1,
+                flex: 1,
+                flexDirection: 'row',
+                justifyContent: 'space-between',
             }}>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('Chat')}>
@@ -155,15 +157,37 @@ export default class Landing extends Component {
                   {
                     display: 'flex',
                     alignItems: 'center',
-                    backgroundColor: 'lightblue',
+                    backgroundColor: 'pink',
                     width: '100%',
-                    height: '100%',
+                    height: '80%',
                     justifyContent: 'center',
+                    paddingLeft: 100,
                   },
                 ]}
                 source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
                 resizeMode={'contain'}>
                 <Text>Chat with Upsy</Text>
+              </ImageBackground>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('')}>
+              {/* style={styles.upsy4}> */}
+              <ImageBackground
+                style={[
+                  styles.upsyImg,
+                  {
+                    display: 'flex',
+                    alignItems: 'center',
+                    backgroundColor: 'pink',
+                    width: '100%',
+                    height: '80%',
+                    justifyContent: 'center',
+                    paddingRight: 100,
+                  },
+                ]}
+                source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
+                resizeMode={'contain'}>
+                <Text>Encouragements</Text>
               </ImageBackground>
             </TouchableOpacity>
           </View>
@@ -223,22 +247,24 @@ export default class Landing extends Component {
               justifyContent: 'space-between',
             }}>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('')}>
-              {/* style={styles.upsy4}> */}
+              onPress={() => this.props.navigation.navigate('Menu')}>
+              {/* style={styles.upsy5}> */}
               <ImageBackground
                 style={[
                   styles.upsyImg,
                   {
                     display: 'flex',
                     alignItems: 'center',
-                    backgroundColor: 'red',
+                    backgroundColor: 'pink',
                     width: '100%',
+                    height: '80%',
                     justifyContent: 'center',
+                    paddingLeft: 100,
                   },
                 ]}
                 source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
                 resizeMode={'contain'}>
-                <Text>Encouragements</Text>
+                <Text>Games</Text>
               </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity
@@ -250,28 +276,11 @@ export default class Landing extends Component {
                   {
                     display: 'flex',
                     alignItems: 'center',
-                    backgroundColor: 'red',
+                    backgroundColor: 'pink',
                     width: '100%',
+                    height: '80%',
                     justifyContent: 'center',
-                  },
-                ]}
-                source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
-                resizeMode={'contain'}>
-                <Text>Upsy Swag</Text>
-              </ImageBackground>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Menu')}>
-              {/* style={styles.upsy5}> */}
-              <ImageBackground
-                style={[
-                  styles.upsyImg,
-                  {
-                    display: 'flex',
-                    alignItems: 'center',
-                    backgroundColor: 'red',
-                    width: '100%',
-                    justifyContent: 'center',
+                    paddingRight: 100,
                   },
                 ]}
                 source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
