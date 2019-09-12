@@ -81,26 +81,26 @@ export default class Memory extends Component {
 
           <Col>
 
-            <Card imageUri={images[0]} matched={false} />
-            <Card imageUri={images[1]} matched={false} />
-            <Card imageUri={images[2]} matched={false} />
-            <Card imageUri={images[3]} matched={false} />
+            <Card imageUri={images[0]} />
+            <Card imageUri={images[1]} />
+            <Card imageUri={images[2]} />
+            <Card imageUri={images[3]} />
 
           </Col>
 
           <Col>
-            <Card imageUri={images[4]} matched={false} />
-            <Card imageUri={images[5]} matched={false} />
-            <Card imageUri={images[6]} matched={false} />
-            <Card imageUri={images[7]} matched={false} />
+            <Card imageUri={images[4]} />
+            <Card imageUri={images[5]} />
+            <Card imageUri={images[6]} />
+            <Card imageUri={images[7]} />
           </Col>
 
 
           <Col>
-            <Card imageUri={images[8]} matched={false} />
-            <Card imageUri={images[9]} matched={false} />
-            <Card imageUri={images[10]} matched={false} />
-            <Card imageUri={images[11]} matched={false} />
+            <Card imageUri={images[8]} />
+            <Card imageUri={images[9]} />
+            <Card imageUri={images[10]} />
+            <Card imageUri={images[11]} />
           </Col>
 
         </Grid>
