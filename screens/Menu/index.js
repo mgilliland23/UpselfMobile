@@ -139,7 +139,7 @@ export default class Landing extends Component {
         <View
           style={{
             display: 'flex',
-            flex: 3,
+            flex: 4,
             backgroundColor: 'pink',
           }}>
           <View
@@ -155,8 +155,9 @@ export default class Landing extends Component {
                   {
                     display: 'flex',
                     alignItems: 'center',
-                    backgroundColor: 'red',
+                    backgroundColor: 'lightblue',
                     width: '100%',
+                    height: '100%',
                     justifyContent: 'center',
                   },
                 ]}
@@ -170,6 +171,7 @@ export default class Landing extends Component {
             style={{
               flex: 1,
               flexDirection: 'row',
+              justifyContent: 'space-between',
             }}>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('DeStress')}>
@@ -180,9 +182,11 @@ export default class Landing extends Component {
                   {
                     display: 'flex',
                     alignItems: 'center',
-                    backgroundColor: 'red',
+                    backgroundColor: 'pink',
                     width: '100%',
+                    height: '80%',
                     justifyContent: 'center',
+                    paddingLeft: 100,
                   },
                 ]}
                 source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
@@ -199,9 +203,11 @@ export default class Landing extends Component {
                   {
                     display: 'flex',
                     alignItems: 'center',
-                    backgroundColor: 'red',
+                    backgroundColor: 'pink',
                     width: '100%',
+                    height: '80%',
                     justifyContent: 'center',
+                    paddingRight: 100,
                   },
                 ]}
                 source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
@@ -214,6 +220,7 @@ export default class Landing extends Component {
             style={{
               flex: 1,
               flexDirection: 'row',
+              justifyContent: 'space-between',
             }}>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('')}>
@@ -232,6 +239,25 @@ export default class Landing extends Component {
                 source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
                 resizeMode={'contain'}>
                 <Text>Encouragements</Text>
+              </ImageBackground>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('Menu')}>
+              {/* style={styles.upsy5}> */}
+              <ImageBackground
+                style={[
+                  styles.upsyImg,
+                  {
+                    display: 'flex',
+                    alignItems: 'center',
+                    backgroundColor: 'red',
+                    width: '100%',
+                    justifyContent: 'center',
+                  },
+                ]}
+                source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
+                resizeMode={'contain'}>
+                <Text>Upsy Swag</Text>
               </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity

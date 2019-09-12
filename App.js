@@ -33,6 +33,9 @@ const MainNavigator = createStackNavigator(
     Memory: {
       screen: Memory,
     },
+    Menu: {
+      screen: Menu,
+    },
   },
   {
     //TODO: Check if this is the first time the user has used this app,
