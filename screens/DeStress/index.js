@@ -8,6 +8,7 @@ import {
   Dimensions,
   Animated,
   Easing,
+  TouchableOpacity,
 } from 'react-native';
 
 const win = Dimensions.get('window');
@@ -94,6 +95,7 @@ export default class Landing extends Component {
             {' '}
             Type in something that is causing you stress{' '}
           </Text>
+
           <ImageBackground
             style={styles.circle}
             source={require('../../assets/images/circle.png')}
