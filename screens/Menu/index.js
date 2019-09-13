@@ -7,7 +7,6 @@ import {
   Dimensions,
   TouchableOpacity,
   Animated,
-  Easing,
   ImageBackground,
 } from 'react-native';
 // import {Col, Row, Grid} from 'react-native-easy-grid';
@@ -17,7 +16,6 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     width: win.width,
-    // height: win.height,
     padding: 1,
     backgroundColor: '#f2f2f2',
   },
@@ -26,20 +24,6 @@ const styles = StyleSheet.create({
     width: '80%',
     alignSelf: 'center',
     marginTop: 0,
-  },
-  padding: {
-    flex: 1,
-    paddingHorizontal: 24,
-  },
-  helloText: {
-    textAlign: 'center',
-    fontSize: 34,
-  },
-  missionText: {
-    paddingTop: 6,
-    textAlign: 'center',
-    fontSize: 20,
-    marginBottom: 20,
   },
   upsyImg: {
     width: 100,
@@ -54,20 +38,21 @@ const styles = StyleSheet.create({
   menuOptionLeftText: {
     fontSize: 15,
     textAlign: 'center',
-    marginTop: 40,
-    marginRight: 56,
-    marginLeft: 54,
+    marginTop: 45,
+    marginRight: 55,
+    marginLeft: 55,
     color: 'white',
     fontWeight: 'bold',
   },
   menuOptionRightText: {
     fontSize: 15,
     textAlign: 'center',
-    marginTop: 40,
-    marginRight: 54,
-    marginLeft: 56,
+    marginTop: 45,
+    marginRight: 55,
+    marginLeft: 55,
     color: 'white',
     fontWeight: 'bold',
+    alignSelf: 'center',
   },
 });
 
