@@ -10,6 +10,7 @@ import {
   Easing,
   ImageBackground,
 } from 'react-native';
+// import {Col, Row, Grid} from 'react-native-easy-grid';
 
 const win = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -18,7 +19,6 @@ const styles = StyleSheet.create({
     width: win.width,
     // height: win.height,
     padding: 1,
-    //alignSelf: 'flex-start',
     backgroundColor: '#f2f2f2',
   },
   logo: {
@@ -41,33 +41,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 20,
   },
-  upsy1: {
-    flex: 1,
-    width: '80%',
-    alignSelf: 'center',
-  },
-  upsy2: {
-    flex: 1,
-    width: '80%',
-    alignSelf: 'center',
-  },
-  upsy3: {
-    flex: 1,
-    width: '80%',
-    alignSelf: 'center',
-  },
-  upsy4: {
-    flex: 1,
-    width: '80%',
-    alignSelf: 'center',
-  },
-  upsy5: {
-    flex: 1,
-    width: '80%',
-    alignSelf: 'center',
-  },
   upsyImg: {
-    // flex: 1,
     width: 100,
     height: 100,
     alignSelf: 'center',
@@ -77,11 +51,23 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 20,
   },
-  menuOptionText: {
-    fontSize: 18,
+  menuOptionLeftText: {
+    fontSize: 15,
     textAlign: 'center',
-    alignSelf: 'center',
-    marginBottom: 100,
+    marginTop: 40,
+    marginRight: 56,
+    marginLeft: 54,
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  menuOptionRightText: {
+    fontSize: 15,
+    textAlign: 'center',
+    marginTop: 40,
+    marginRight: 54,
+    marginLeft: 56,
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
 
@@ -91,35 +77,6 @@ export default class Landing extends Component {
     this.animatedValue = new Animated.Value(0);
   }
 
-  handleAnimation = () => {
-    // A loop is needed for continuous animation
-    Animated.loop(
-      // Animation consists of a sequence of steps
-      Animated.sequence([
-        // start rotation in one direction (only half the time is needed)
-        Animated.timing(this.animatedValue, {
-          toValue: 1.0,
-          duration: 150,
-          easing: Easing.linear,
-          useNativeDriver: true,
-        }),
-        // rotate in other direction, to minimum value (= twice the duration of above)
-        Animated.timing(this.animatedValue, {
-          toValue: -1.0,
-          duration: 300,
-          easing: Easing.linear,
-          useNativeDriver: true,
-        }),
-        // return to begin position
-        Animated.timing(this.animatedValue, {
-          toValue: 0.0,
-          duration: 150,
-          easing: Easing.linear,
-          useNativeDriver: true,
-        }),
-      ]),
-    ).start();
-  };
   _onPressUpsy() {
     alert('You tapped the button!');
   }
@@ -140,54 +97,49 @@ export default class Landing extends Component {
           style={{
             display: 'flex',
             flex: 4,
-            backgroundColor: 'pink',
           }}>
           <View
             style={{
-                flex: 1,
-                flexDirection: 'row',
-                justifyContent: 'space-between',
+              flex: 1,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
             }}>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('Chat')}>
-              {/* style={styles.upsy1} */}
               <ImageBackground
                 style={[
                   styles.upsyImg,
                   {
                     display: 'flex',
                     alignItems: 'center',
-                    backgroundColor: 'pink',
                     width: '100%',
-                    height: '80%',
+                    height: '85%',
                     justifyContent: 'center',
-                    paddingLeft: 100,
+                    alignSelf: 'center',
                   },
                 ]}
-                source={require('../../assets/images/upsy_emo/upsy1_emo1.png')}
+                source={require('../../assets/images/upsy_emo/upsy1_emo2.png')}
                 resizeMode={'contain'}>
-                <Text>Chat with Upsy</Text>
+                <Text style={styles.menuOptionLeftText}>Chat Upsy</Text>
               </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('')}>
-              {/* style={styles.upsy4}> */}
               <ImageBackground
                 style={[
                   styles.upsyImg,
                   {
                     display: 'flex',
                     alignItems: 'center',
-                    backgroundColor: 'pink',
                     width: '100%',
-                    height: '80%',
+                    height: '85%',
                     justifyContent: 'center',
-                    paddingRight: 100,
+                    alignSelf: 'center',
                   },
                 ]}
-                source={require('../../assets/images/upsy_emo/upsy1_emo4.png')}
+                source={require('../../assets/images/upsy_emo/upsy1_emo8.png')}
                 resizeMode={'contain'}>
-                <Text>Encouragements</Text>
+                <Text style={styles.menuOptionRightText}>Compliments</Text>
               </ImageBackground>
             </TouchableOpacity>
           </View>
@@ -199,44 +151,38 @@ export default class Landing extends Component {
             }}>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('')}>
-              {/* style={styles.upsy2}> */}
               <ImageBackground
                 style={[
                   styles.upsyImg,
                   {
                     display: 'flex',
                     alignItems: 'center',
-                    backgroundColor: 'pink',
                     width: '100%',
-                    height: '80%',
+                    height: '85%',
                     justifyContent: 'center',
-                    paddingLeft: 100,
                   },
                 ]}
                 source={require('../../assets/images/upsy_emo/upsy1_emo7.png')}
                 resizeMode={'contain'}>
-                <Text>Stress Test</Text>
+                <Text style={styles.menuOptionLeftText}>Stress Test</Text>
               </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('DeStress')}>
-              {/* // style={styles.upsy3}> */}
               <ImageBackground
                 style={[
                   styles.upsyImg,
                   {
                     display: 'flex',
                     alignItems: 'center',
-                    backgroundColor: 'pink',
                     width: '100%',
-                    height: '80%',
+                    height: '85%',
                     justifyContent: 'center',
-                    paddingRight: 100,
                   },
                 ]}
-                source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
+                source={require('../../assets/images/upsy_emo/upsy1_emo1.png')}
                 resizeMode={'contain'}>
-                <Text>Calm Cloud</Text>
+                <Text style={styles.menuOptionRightText}>Calm Cloud</Text>
               </ImageBackground>
             </TouchableOpacity>
           </View>
@@ -247,45 +193,40 @@ export default class Landing extends Component {
               justifyContent: 'space-between',
             }}>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Arcade')}>
-              {/* style={styles.upsy5}> */}
+              onPress={() => this.props.navigation.navigate('Memory')}>
               <ImageBackground
                 style={[
                   styles.upsyImg,
                   {
                     display: 'flex',
                     alignItems: 'center',
-                    backgroundColor: 'pink',
                     width: '100%',
-                    height: '80%',
+                    height: '85%',
                     justifyContent: 'center',
-                    paddingLeft: 100,
+                    marginLeft: '5%'
                   },
                 ]}
-                source={require('../../assets/images/upsy_emo/upsy1_emo2.png')}
+                source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
                 resizeMode={'contain'}>
-                <Text>Games</Text>
+                <Text style={styles.menuOptionLeftText}>Arcade</Text>
               </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('Swag')}>
-              {/* style={styles.upsy5}> */}
               <ImageBackground
                 style={[
                   styles.upsyImg,
                   {
                     display: 'flex',
                     alignItems: 'center',
-                    backgroundColor: 'pink',
                     width: '100%',
-                    height: '80%',
+                    height: '85%',
                     justifyContent: 'center',
-                    paddingRight: 100,
                   },
                 ]}
-                source={require('../../assets/images/upsy_emo/upsy1_emo2.png')}
+                source={require('../../assets/images/upsy_emo/upsy1_emo10.png')}
                 resizeMode={'contain'}>
-                <Text>Upsy Swag</Text>
+                <Text style={styles.menuOptionRightText}>Upsy Swag</Text>
               </ImageBackground>
             </TouchableOpacity>
           </View>
