@@ -203,7 +203,7 @@ export default class Landing extends Component {
                     width: '100%',
                     height: '85%',
                     justifyContent: 'center',
-                    marginLeft: '5%'
+                    marginLeft: '5%',
                   },
                 ]}
                 source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
@@ -222,6 +222,7 @@ export default class Landing extends Component {
                     width: '100%',
                     height: '85%',
                     justifyContent: 'center',
+                    margin: '1%',
                   },
                 ]}
                 source={require('../../assets/images/upsy_emo/upsy1_emo10.png')}
