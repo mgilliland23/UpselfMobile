@@ -24,24 +24,50 @@ const styles = StyleSheet.create({
 });
 
 // let value = false;
+showingE = [null, false, false, false, false, false, false, false, false, false, false, false, false]; //state[0] is not considered
 state = [null, false, false, false, false, false, false]; //state[0] is not considered
-showing = [null, false, false, false, false, false, false]; //state[0] is not considered
 move = [0, 0];
+moveid = [0, 0];
 click = 0;
 
 
-function checktiles(value) {
+function checktiles() {
     if (click % 2 == 0) {
         if (move[0] == move[1] && move[0] != 0) {
-            state[value] = true;
-            showing[value] = true;
+            showingE[moveid[0]] = true;
+            showingE[moveid[1]] = true;
             click = 0;
         }
+        showingE[moveid[0]] = false;
+        showingE[moveid[1]] = false;
         click = 0;
-        showing[move[0]] = false;
-        showing[move[1]] = false;
+    }
+
+}
+
+function cleantiles() {
+    if (click % 2 == 0 && moveid[0] != moveid[1]) {
+            console.log("clean all");
+            showingE[moveid[0]] = false;
+
+        // console.log(showingE);
+    }
+    else {
+        // console.log("keep open");
     }
 }
+
+function matchmsg() {
+    if (move[0] == move[1]) {
+        // console.log("match!!!");
+    } else {
+        // console.log("not matche :(");
+    }
+
+}
+
+
+
 
 
 
@@ -57,12 +83,12 @@ export default class Card extends Component {
     //     },
     // };
 
+
     constructor(props) {
         super(props);
         this.state = {
             showing: false
         };
-
     }
 
 
@@ -75,21 +101,40 @@ export default class Card extends Component {
                     // Pass any View or Component inside the curly bracket.
                     // Here the ? Question Mark represent the ternary operator.
 
-                    (this.state.showing == false && state[this.props.imageUri] == false) ? (
+                    (this.props.showme == false) ? (
+                        // (state[this.props.imageUri] == false && showing[this.props.imageUri] == false) ? (
                         <TouchableOpacity
                             // onPress={() => this.setState({ isHidden: true })}
                             // onPress={() => alert("test1")}
                             onPress={() => [
-                                this.setState({ showing: true }),
+                                // this.setState({ showing: true }),
+                                showingE[this.props.id] = true,
+                                // this.props.showme = true,
+                                // console.log(showingE[this.props.id]),
+                                // console.log(showingE),
+                                // console.log(this.props.id),
+                                // state[this.props.imageUri] == true,
                                 // console.log(this.props.imageUri),
                                 // console.log(state[this.props.imageUri]),
                                 move.push(this.props.imageUri),
                                 move.shift(),
-                                console.log(move),
+                                moveid.push(this.props.id),
+                                moveid.shift(),
+                                // console.log(move),
+                                // console.log(moveid),
+                                // console.log(click),
+                                // checktiles(this.props.imageUri)
+                                // console.log(this)
+                                // console.log(state),
+                                // console.log(showing)
                                 click++,
-                                console.log(click),
-                                checktiles(this.props.imageUri),
-                                console.log(this)
+                                matchmsg(),
+                                cleantiles(),
+                                // checktiles(),
+                                // console.log(showingE),
+                                // console.log(this),
+                                this.props.action(showingE),
+                                // this.forceUpdate(),
                             ]}
                             // onPress={() =>
                             //     this.setState({
@@ -112,7 +157,12 @@ export default class Card extends Component {
                                 // onPress={() => this.setState({ isHidden: false })}
                                 // onPress={() => alert("test2")}
                                 // onPress={() => value = false}
-                                onPress={() => this.setState({ showing: false })}
+                                onPress={() => [
+                                    // this.setState({ showing: false }),
+                                    // showingE[this.props.id] = false,
+                                    // console.log(showingE),
+                                    // this.forceUpdate()
+                                ]}
                                 // onPress={() => this.setState({ isHidden: false })}
                                 // onPress={() => this.props.action(false)}
                                 style={styles.click}>
