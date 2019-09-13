@@ -164,7 +164,7 @@ export default class Landing extends Component {
                     paddingLeft: 100,
                   },
                 ]}
-                source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
+                source={require('../../assets/images/upsy_emo/upsy1_emo1.png')}
                 resizeMode={'contain'}>
                 <Text>Chat with Upsy</Text>
               </ImageBackground>
@@ -185,7 +185,7 @@ export default class Landing extends Component {
                     paddingRight: 100,
                   },
                 ]}
-                source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
+                source={require('../../assets/images/upsy_emo/upsy1_emo4.png')}
                 resizeMode={'contain'}>
                 <Text>Encouragements</Text>
               </ImageBackground>
@@ -198,7 +198,7 @@ export default class Landing extends Component {
               justifyContent: 'space-between',
             }}>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('DeStress')}>
+              onPress={() => this.props.navigation.navigate('')}>
               {/* style={styles.upsy2}> */}
               <ImageBackground
                 style={[
@@ -213,13 +213,13 @@ export default class Landing extends Component {
                     paddingLeft: 100,
                   },
                 ]}
-                source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
+                source={require('../../assets/images/upsy_emo/upsy1_emo7.png')}
                 resizeMode={'contain'}>
                 <Text>Stress Test</Text>
               </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('')}>
+              onPress={() => this.props.navigation.navigate('DeStress')}>
               {/* // style={styles.upsy3}> */}
               <ImageBackground
                 style={[
@@ -247,7 +247,7 @@ export default class Landing extends Component {
               justifyContent: 'space-between',
             }}>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Menu')}>
+              onPress={() => this.props.navigation.navigate('Arcade')}>
               {/* style={styles.upsy5}> */}
               <ImageBackground
                 style={[
@@ -262,13 +262,13 @@ export default class Landing extends Component {
                     paddingLeft: 100,
                   },
                 ]}
-                source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
+                source={require('../../assets/images/upsy_emo/upsy1_emo2.png')}
                 resizeMode={'contain'}>
                 <Text>Games</Text>
               </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Menu')}>
+              onPress={() => this.props.navigation.navigate('Swag')}>
               {/* style={styles.upsy5}> */}
               <ImageBackground
                 style={[
@@ -283,7 +283,7 @@ export default class Landing extends Component {
                     paddingRight: 100,
                   },
                 ]}
-                source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
+                source={require('../../assets/images/upsy_emo/upsy1_emo2.png')}
                 resizeMode={'contain'}>
                 <Text>Upsy Swag</Text>
               </ImageBackground>
