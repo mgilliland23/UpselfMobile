@@ -27,9 +27,9 @@ const styles = StyleSheet.create({
   },
 });
 
-count = 0;
+let count = 0;
 
-imagesO = [
+const imagesO = [
   require('../../assets/images/check/check1.png'),
   require('../../assets/images/check/check2.png'),
   require('../../assets/images/check/check3.png'),
@@ -52,7 +52,7 @@ function shuffle(a) {
   return a;
 }
 
-images = shuffle(imagesO);
+const images = shuffle(imagesO);
 
 console.log(images);
 
