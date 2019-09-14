@@ -40,7 +40,7 @@ const MainNavigator = createStackNavigator(
   {
     //TODO: Check if this is the first time the user has used this app,
     //if so, initial route should be Landing, else initial route should be Home
-    initialRouteName: 'CalmCloud',
+    initialRouteName: 'Menu',
   },
 );
 

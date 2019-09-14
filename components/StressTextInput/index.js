@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   textInput: {
     color: 'white',
     alignSelf: 'center',
-    fontSize: 20,
+    fontSize: 30,
   },
   inputBox: {
     color: 'white',
