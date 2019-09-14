@@ -46,6 +46,27 @@ function checkstatus(values) {
     return true;
 }
 
+function checkwin(array) {
+    for (var i = 1; i < array.length; i++) {
+        if (array[i] == false) {
+            return false
+        }
+    }
+
+    return true;
+}
+
+function alertwin(array, value) {
+    if (checkwin(array) == true) {
+        alert("you win! with " + click / 2 + " clicks");
+        for (var i = 1; i < array.length; i++) {
+            array[i] = false;
+        }
+        value.action(array);
+
+    }
+}
+
 
 function moveupdate(imageUri, id) {
     move.push(imageUri);//this.props.imageUri
@@ -61,7 +82,7 @@ function cleantiles(move0, move1, value) {
         showingE[move1] = false;
         value.action(showingE);
         animate = true;
-    }, 300);
+    }, 600);
 }
 
 
@@ -110,7 +131,8 @@ export default class Card extends Component {
                                     console.log(move),
                                     console.log(moveid),
                                     console.log(click),
-                                    checkstatus(this.props)
+                                    checkstatus(this.props),
+                                    alertwin(showingE, this.props)
                                 ) :
                                     (
                                         null
@@ -177,8 +199,7 @@ export default class Card extends Component {
                                     // console.log(showingE),
                                     // this.forceUpdate()
                                 ]}
-                                // onPress={() => this.setState({ isHidden: false })}
-                                // onPress={() => this.props.action(false)}
+
                                 style={styles.click}>
                                 <Image
                                     style={[styles.click]}
