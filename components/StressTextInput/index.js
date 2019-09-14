@@ -22,7 +22,7 @@ function InputBox(props) {
     <TextInput
       {...props} // Inherit any props passed to it; e.g., multiline, numberOfLines below
       editable
-      autoFocus="true"
+      autoFocus={true}
       returnKeyType="done"
       style={styles.textInput}
       onSubmitEditing={Keyboard.dismiss}

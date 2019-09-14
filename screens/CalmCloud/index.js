@@ -27,7 +27,7 @@ export default class StressCloud extends Component {
     headerStyle: {
       backgroundColor: '#6bccf3',
     },
-    title: 'Stress Cloud',
+    title: 'Calm Cloud',
     headerTintColor: '#f2f2f2',
     headerTitleStyle: {
       fontWeight: 'bold',
@@ -38,51 +38,103 @@ export default class StressCloud extends Component {
     super(props);
     //Prop to hold the animation value of the stressballs height and width
     this.stressBallScaleValue = new Animated.Value(1);
-    //State used to hide text after the stressball is clicked
     this.causeTextOpacity = new Animated.Value(1);
-    this.dissapearTextOpacity = new Animated.Value(0);
+    this.instructionsTextOpacity = new Animated.Value(0);
+    this.instructionsArr = [
+      'first instruction',
+      'second instruction',
+      'third instruciton',
+      'fourth instruction',
+      'fifth instruction',
+    ];
+
+    //this.state = {};
   }
 
+  state = {
+    text: 'Now tap the circle and watch your stress dissapear',
+    instructionsPosition: 0,
+  };
+
   componentDidMount() {
+    //Add event listener for when the user presses the 'done' button on the keyboard
     this.keyboardDidHideListener = Keyboard.addListener(
       'keyboardDidHide',
       this._keyboardDidHide,
     );
   }
 
+  //When the keyboard is collapsed, animate the top text fading out and the bottom instruction text fading in
   _keyboardDidHide = () => {
-    //Hide text 'what is causing stress...'
-    // LayoutAnimation.spring();
+    //Fade out top text 'what is causing stress...'
     Animated.sequence([
       Animated.timing(this.causeTextOpacity, {
         toValue: 0,
-        duration: 1000,
+        duration: 1500,
         easing: Easing.ease,
       }).start(),
 
-      //Display text 'tap to dissapear....'
-      Animated.timing(this.dissapearTextOpacity, {
+      //Fade in instruction text: 'tap to make stress dissapear....'
+      Animated.timing(this.instructionsTextOpacity, {
         toValue: 1,
-        delay: 1000,
-        duration: 2000,
+        delay: 1500,
+        duration: 2500,
         easing: Easing.ease,
       }).start(),
     ]);
   };
 
+  animateInstructions = () => {
+    console.log('text: ', this.state.text);
+    console.log('position: ', this.state.instructionsPosition);
+    console.log(this.instructionsArr[this.state.instructionsPosition]);
+    Animated.sequence([
+      //Fade the next instruction text back in,
+      Animated.timing(this.instructionsTextOpacity, {
+        toValue: 1,
+        duration: 2000,
+        delay: 1500,
+      }),
+      //Fade the instruction out
+      Animated.timing(this.instructionsTextOpacity, {
+        toValue: 0,
+        delay: 2500,
+        duration: 3000,
+      }),
+    ]).start(() => {
+      //Set the text state to the next instruction in the array
+      this.state.instructionsPosition = this.state.instructionsPosition + 1;
+      this.setState({
+        text: this.instructionsArr[this.state.instructionsPosition],
+      });
+      //recursive call to animateInstructions as long as there are more instructions to dislay
+      if (this.state.instructionsPosition < 5) {
+        this.animateInstructions();
+      }
+    });
+  };
+
   handleStressBallAnimation = () => {
-    //Start animation by decreasing the stressball's scale from 1 to 0 over the course of 40sec
+    //Animate ball shrinking by decreasing the stressball's scale from 1 to 0 over the course of 40sec
     Animated.timing(this.stressBallScaleValue, {
       toValue: 0,
       duration: 40000,
       easing: Easing.ease,
     }).start();
-    //Display text 'tap to dissapear....'
-    Animated.timing(this.dissapearTextOpacity, {
+
+    //Animate text fading out
+    Animated.timing(this.instructionsTextOpacity, {
       toValue: 0,
-      duration: 3000,
+      duration: 1500,
       easing: Easing.ease,
-    }).start();
+    }).start(() => {
+      //After this instruction disappears, change the instruction text to the first instruction in the array
+      this.setState({
+        text: this.instructionsArr[this.state.instructionsPosition],
+      });
+      //Now animate the list of instructions
+      this.animateInstructions();
+    });
   };
 
   render() {
@@ -124,9 +176,11 @@ export default class StressCloud extends Component {
             <Animated.Text
               style={[
                 styles.getStartedText,
-                {opacity: this.dissapearTextOpacity},
+                {
+                  opacity: this.instructionsTextOpacity,
+                },
               ]}>
-              Now tap the circle and watch your stress dissapear
+              {this.state.text}
             </Animated.Text>
           </FadeInView>
         </View>
