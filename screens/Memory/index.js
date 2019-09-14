@@ -13,7 +13,6 @@ import {
   Animated,
   Easing,
 } from 'react-native';
-import { tsParenthesizedType } from '@babel/types';
 
 const win = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -84,11 +83,9 @@ export default class Memory extends Component {
   }
 
   handler(data) {
-
     this.setState({
       messageShown: data
     });
-
   }
 
 
