@@ -4,12 +4,15 @@ import {
   StyleSheet,
   View,
   Text,
-  ImageBackground,
+  Image,
+  ImageBackground as ImageBk,
   Dimensions,
   Animated,
   Easing,
-  TouchableOpacity,
+  TouchableWithoutFeedback,
 } from 'react-native';
+
+import * as Animatable from 'react-native-animatable';
 
 const win = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -37,12 +40,11 @@ const styles = StyleSheet.create({
   stressBall: {
     position: 'absolute',
     paddingHorizontal: 30,
-    top: 200,
+    top: 250,
     width: '100%',
     justifyContent: 'center',
   },
 });
-
 export default class Landing extends Component {
   static navigationOptions = {
     headerStyle: {
@@ -53,39 +55,6 @@ export default class Landing extends Component {
       fontWeight: 'bold',
     },
   };
-  constructor(props) {
-    super(props);
-    this.animatedValue = new Animated.Value(0);
-  }
-  handleAnimation = () => {
-    // A loop is needed for continuous animation
-    Animated.loop(
-      // Animation consists of a sequence of steps
-      Animated.sequence([
-        // start rotation in one direction (only half the time is needed)
-        Animated.timing(this.animatedValue, {
-          toValue: 1.0,
-          duration: 150,
-          easing: Easing.linear,
-          useNativeDriver: true,
-        }),
-        // rotate in other direction, to minimum value (= twice the duration of above)
-        Animated.timing(this.animatedValue, {
-          toValue: -1.0,
-          duration: 300,
-          easing: Easing.linear,
-          useNativeDriver: true,
-        }),
-        // return to begin position
-        Animated.timing(this.animatedValue, {
-          toValue: 0.0,
-          duration: 150,
-          easing: Easing.linear,
-          useNativeDriver: true,
-        }),
-      ]),
-    ).start();
-  };
 
   render() {
     return (
@@ -95,15 +64,16 @@ export default class Landing extends Component {
             {' '}
             Type in something that is causing you stress{' '}
           </Text>
-
-          <ImageBackground
-            style={styles.circle}
-            source={require('../../assets/images/circle.png')}
-            resizeMode={'contain'}>
-            <View style={styles.stressBall}>
-              <StressTextInput />
-            </View>
-          </ImageBackground>
+          <TouchableWithoutFeedback onPress={this.bounce}>
+            <Animatable.Image
+              style={styles.circle}
+              source={require('../../assets/images/circle.png')}
+              resizeMode={'contain'}
+            />
+          </TouchableWithoutFeedback>
+          <View style={styles.stressBall}>
+            <StressTextInput />
+          </View>
         </View>
       </View>
     );
