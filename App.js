@@ -33,11 +33,14 @@ const MainNavigator = createStackNavigator(
     Memory: {
       screen: Memory,
     },
+    Menu: {
+      screen: Menu,
+    },
   },
   {
     //TODO: Check if this is the first time the user has used this app,
     //if so, initial route should be Landing, else initial route should be Home
-    initialRouteName: 'DeStress',
+    initialRouteName: 'Menu',
   },
 );
 
