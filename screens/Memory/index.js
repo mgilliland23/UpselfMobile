@@ -84,9 +84,11 @@ export default class Memory extends Component {
   }
 
   handler(data) {
+
     this.setState({
       messageShown: data
     });
+
   }
 
 

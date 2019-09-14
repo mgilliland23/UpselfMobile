@@ -29,6 +29,7 @@ state = [null, false, false, false, false, false, false]; //state[0] is not cons
 move = [0, 0];
 moveid = [0, 0];
 click = 0;
+match = false;
 
 
 function checktiles() {
@@ -46,24 +47,30 @@ function checktiles() {
 }
 
 function cleantiles() {
-    if (click % 2 == 0 && moveid[0] != moveid[1]) {
-            console.log("clean all");
-            showingE[moveid[0]] = false;
-
-        // console.log(showingE);
+    if (click % 2 == 0 && move[0] != move[1]) {
+        // console.log("clean all");
+        showingE[moveid[0]] = false;
+        showingE[moveid[1]] = false;
+        console.log(showingE);
     }
-    else {
-        // console.log("keep open");
+    else if (click % 2 == 0 && moveid[0] != 0) {
+        if (move[0] == move[1]) {
+            return true;
+        }
     }
 }
 
 function matchmsg() {
-    if (move[0] == move[1]) {
-        // console.log("match!!!");
-    } else {
-        // console.log("not matche :(");
+    if (click % 2 == 0 && moveid[0] != 0) {
+
+        if (move[0] == move[1]) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    return false;
 }
 
 
@@ -108,6 +115,7 @@ export default class Card extends Component {
                             // onPress={() => alert("test1")}
                             onPress={() => [
                                 // this.setState({ showing: true }),
+                                click++,
                                 showingE[this.props.id] = true,
                                 // this.props.showme = true,
                                 // console.log(showingE[this.props.id]),
@@ -120,20 +128,21 @@ export default class Card extends Component {
                                 move.shift(),
                                 moveid.push(this.props.id),
                                 moveid.shift(),
-                                // console.log(move),
+                                console.log(move),
+                                cleantiles(),
                                 // console.log(moveid),
                                 // console.log(click),
                                 // checktiles(this.props.imageUri)
                                 // console.log(this)
                                 // console.log(state),
                                 // console.log(showing)
-                                click++,
-                                matchmsg(),
-                                cleantiles(),
+                                // matchmsg(),
+                                this.props.action(showingE),
+                                // cleantiles(),
                                 // checktiles(),
+                                // (click % 2 == 0) ? this.props.action(showingE, true) : this.props.action(showingE, false),
                                 // console.log(showingE),
                                 // console.log(this),
-                                this.props.action(showingE),
                                 // this.forceUpdate(),
                             ]}
                             // onPress={() =>
