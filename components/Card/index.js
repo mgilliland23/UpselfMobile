@@ -24,11 +24,11 @@ const styles = StyleSheet.create({
 });
 
 // let value = false;
-showingE = [null, false, false, false, false, false, false, false, false, false, false, false, false]; //state[0] is not considered
-move = [0, 0];
-moveid = [0, 0];
-click = 0;
-animate = true;
+var showingE = [null, false, false, false, false, false, false, false, false, false, false, false, false]; //state[0] is not considered
+var move = [0, 0];
+var moveid = [0, 0];
+var click = 0;
+var animate = true;
 
 function checkstatus(values) {
     if (click % 2 == 0) {
@@ -58,14 +58,14 @@ function checkwin(array) {
 
 function alertwin(array, value) {
     if (checkwin(array) == true) {
-        if (click/2 <= 10) {
-            alert("YOU WIN! \n It took you " + click / 2 + " clicks. \n\nThat is awesome congrats! 🙌👏👍");
+        if (click / 2 <= 10) {
+            alert("YOU WIN! 🏆🥇 \n It took you " + click / 2 + " clicks. \n\nThat is awesome congrats! 🙌👏👍");
         }
-        else if (click/2 <= 13) {
-            alert("YOU WIN! \n It took you " + click / 2 + " clicks. \n\nThat is great... but I know you can do better! 🤗");
+        else if (click / 2 <= 13) {
+            alert("YOU WIN! 🥈 \n It took you " + click / 2 + " clicks. \n\nThat is great... but I know you can do better! 🤗");
         }
         else {
-            alert("YOU WIN! \n It took you " + click / 2 + " clicks. \n\nI know you can do it in 10 clicks! 🤗😊");
+            alert("YOU WIN! 🥉 \n It took you " + click / 2 + " clicks. \n\nI know you can do it in 10 clicks! 🤗😊");
         }
 
         for (var i = 1; i < array.length; i++) {
