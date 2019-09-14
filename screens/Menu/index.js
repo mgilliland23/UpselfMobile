@@ -57,6 +57,16 @@ const styles = StyleSheet.create({
 });
 
 export default class Landing extends Component {
+  static navigationOptions = {
+    headerStyle: {
+      backgroundColor: '#6bccf3',
+    },
+    title: 'Home',
+    headerTintColor: '#f2f2f2',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  };
   constructor(props) {
     super(props);
     this.animatedValue = new Animated.Value(0);
