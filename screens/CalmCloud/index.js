@@ -65,6 +65,7 @@ export default class StressCloud extends Component {
   }
 
   //When the keyboard is collapsed, animate the top text fading out and the bottom instruction text fading in
+  //TODO: make sure there is something in the text box first
   _keyboardDidHide = () => {
     //Fade out top text 'what is causing stress...'
     Animated.sequence([
@@ -84,10 +85,8 @@ export default class StressCloud extends Component {
     ]);
   };
 
+  //Fade instructions in and out while the stressball is shrinking
   animateInstructions = () => {
-    console.log('text: ', this.state.text);
-    console.log('position: ', this.state.instructionsPosition);
-    console.log(this.instructionsArr[this.state.instructionsPosition]);
     Animated.sequence([
       //Fade the next instruction text back in,
       Animated.timing(this.instructionsTextOpacity, {
@@ -140,6 +139,10 @@ export default class StressCloud extends Component {
   render() {
     return (
       <View style={styles.background}>
+        <Animated.Image
+          style={styles.clouds}
+          source={require('../../assets/images/clouds/cloud1.png')}
+        />
         <View style={styles.padding}>
           <FadeInView style={styles.topText} duration={3000}>
             <Animated.Text

@@ -38,4 +38,9 @@ export default StyleSheet.create({
     marginBottom: 100,
     flex: 1,
   },
+  clouds: {
+    width: 50,
+    position: 'absolute',
+    bottom: 0,
+  },
 });
