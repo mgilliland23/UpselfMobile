@@ -1,15 +1,15 @@
-import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
 import StressTextInput from '../../components/StressTextInput';
 import FadeInView from '../../components/FadeInView';
+import FloatingClouds from '../../components/FloatingClouds';
+
 import {
   View,
-  Text,
   ImageBackground,
   Animated,
   Easing,
   TouchableOpacity,
   NativeModules,
-  LayoutAnimation,
   Keyboard,
 } from 'react-native';
 
@@ -139,10 +139,7 @@ export default class StressCloud extends Component {
   render() {
     return (
       <View style={styles.background}>
-        <Animated.Image
-          style={styles.clouds}
-          source={require('../../assets/images/clouds/cloud1.png')}
-        />
+        <FloatingClouds />
         <View style={styles.padding}>
           <FadeInView style={styles.topText} duration={3000}>
             <Animated.Text
