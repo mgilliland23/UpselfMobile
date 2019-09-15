@@ -73,6 +73,7 @@ export default class StressCloud extends Component {
         toValue: 0,
         duration: 1500,
         easing: Easing.ease,
+        useNativeDriver: true,
       }).start(),
 
       //Fade in instruction text: 'tap to make stress dissapear....'
@@ -81,6 +82,7 @@ export default class StressCloud extends Component {
         delay: 1500,
         duration: 2500,
         easing: Easing.ease,
+        useNativeDriver: true,
       }).start(),
     ]);
   };
@@ -93,12 +95,14 @@ export default class StressCloud extends Component {
         toValue: 1,
         duration: 2000,
         delay: 1500,
+        useNativeDriver: true,
       }),
       //Fade the instruction out
       Animated.timing(this.instructionsTextOpacity, {
         toValue: 0,
         delay: 2500,
         duration: 3000,
+        useNativeDriver: true,
       }),
     ]).start(() => {
       //Set the text state to the next instruction in the array
@@ -119,6 +123,7 @@ export default class StressCloud extends Component {
       toValue: 0,
       duration: 40000,
       easing: Easing.ease,
+      useNativeDriver: true,
     }).start();
 
     //Animate text fading out
@@ -126,6 +131,7 @@ export default class StressCloud extends Component {
       toValue: 0,
       duration: 1500,
       easing: Easing.ease,
+      useNativeDriver: true,
     }).start(() => {
       //After this instruction disappears, change the instruction text to the first instruction in the array
       this.setState({
