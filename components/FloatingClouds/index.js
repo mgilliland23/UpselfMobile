@@ -9,7 +9,7 @@ export default class FloatingClouds extends Component {
   //I.e. when the stressball is tapped, we don't want this componenet to re render
   constructor(props) {
     super(props);
-    this.clouds = [];
+    this.state = {clouds: []};
   }
 
   //   shouldComponentUpdate(nextProps, nextState) {
@@ -21,10 +21,18 @@ export default class FloatingClouds extends Component {
   }
 
   createClouds = () => {
-    this.clouds.push(<Cloud />);
+    this.setState(prevState => ({
+      clouds: [...prevState.clouds, <Cloud />],
+    }));
+    // setInterval(() => {
+
+    // }, 1200);
   };
 
   render() {
-    return <Fragment>{this.clouds}</Fragment>;
+    //this.createClouds();
+    console.log('clouds: ', this.state.clouds);
+
+    return <Fragment>{this.state.clouds.map(cloud => cloud)}</Fragment>;
   }
 }
