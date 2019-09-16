@@ -74,14 +74,6 @@ function alertwin(array, value) {
         value.action(array);
     }
 
-    for (var i = 1; i < array.length; i++) {
-      array[i] = false;
-    }
-    value.action(array);
-  }
-  value.action(array);
-}
-
 function moveupdate(imageUri, id) {
   move.push(imageUri); //this.props.imageUri
   move.shift();
