@@ -38,7 +38,7 @@ export default class Cloud extends Component {
     //Fade the next instruction text back in,
     Animated.timing(this.cloudPosition, {
       toValue: 1,
-      duration: 15000,
+      duration: 17000,
       easing: Easing.ease,
       useNativeDriver: true,
     }).start();

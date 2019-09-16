@@ -85,7 +85,7 @@ export default class FloatingClouds extends Component {
         stopAnimation();
         console.log('stop producing clouds');
       }
-    }, 1500);
+    }, 2000);
 
     function stopAnimation() {
       clearInterval(animateClouds);

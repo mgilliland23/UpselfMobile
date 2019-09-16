@@ -24,18 +24,19 @@ export default StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'column',
     textAlign: 'center',
-    paddingBottom: 150,
   },
   topText: {
+    // display: 'flex',
     marginTop: 50,
-    marginBottom: 50,
-    flex: 1,
+    // flex: 1,
   },
   stressBallSection: {
-    flex: 10,
+    flex: 2,
+    marginBottom: 50,
   },
   bottomText: {
-    marginBottom: 100,
+    display: 'flex',
+    //marginBottom: 100,
     flex: 1,
   },
 });
