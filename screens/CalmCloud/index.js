@@ -119,6 +119,7 @@ export default class StressCloud extends Component {
   };
 
   handleStressBallAnimation = () => {
+    //Set this state to start rendering the floating clouds
     this.setState({
       animationStarted: true,
     });
@@ -167,7 +168,10 @@ export default class StressCloud extends Component {
           </FadeInView>
 
           <FadeInView style={styles.stressBallSection} duration={3500}>
-            <TouchableOpacity onPress={() => this.handleStressBallAnimation()}>
+            <TouchableOpacity
+              onPress={() =>
+                !this.state.animationStarted && this.handleStressBallAnimation()
+              }>
               <AnimatedImage
                 style={[
                   styles.stressBall,

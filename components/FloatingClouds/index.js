@@ -28,7 +28,7 @@ export default class FloatingClouds extends Component {
       console.log(cloudCount);
 
       //Should we break the screen into 2 sections or 3?
-      switch (cloudCount % 2) {
+      switch (cloudCount % 3) {
         case 0:
           console.log('beginning third of screen');
           //Dont let the cloud be generated anywhere outside of the first third of the screen's x-axis
@@ -60,20 +60,20 @@ export default class FloatingClouds extends Component {
           }));
           break;
 
-        // case 2:
-        //   //Dont let the cloud be generated anywhere outside of the second third of the screen's x-axis
-        //   max = (win.width * 2) / 3;
-        //   //Make sure the entire cloud fits on the screen?
-        //   min = win.width / 3;
-        //   //This is the value used to indicate where on the x axis the cloud will be rendered
-        //   xVal = Math.floor(Math.random() * (max - min + 1) + min);
-        //   this.setState(prevState => ({
-        //     cloudsArr: [
-        //       ...prevState.cloudsArr,
-        //       <Cloud xPosition={xVal} id={cloudCount} />,
-        //     ],
-        //   }));
-        //   break;
+        case 2:
+          //Dont let the cloud be generated anywhere outside of the second third of the screen's x-axis
+          max = (win.width * 2) / 3;
+          //Make sure the entire cloud fits on the screen?
+          min = win.width / 3;
+          //This is the value used to indicate where on the x axis the cloud will be rendered
+          xVal = Math.floor(Math.random() * (max - min + 1) + min);
+          this.setState(prevState => ({
+            cloudsArr: [
+              ...prevState.cloudsArr,
+              <Cloud xPosition={xVal} id={cloudCount} />,
+            ],
+          }));
+          break;
       }
     };
     placeCloud(numClouds);
@@ -81,7 +81,7 @@ export default class FloatingClouds extends Component {
     let animateClouds = setInterval(() => {
       numClouds++;
       placeCloud(numClouds);
-      if (numClouds > 30) {
+      if (numClouds > 45) {
         stopAnimation();
         console.log('stop producing clouds');
       }
