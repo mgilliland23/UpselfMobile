@@ -81,7 +81,7 @@ export default class FloatingClouds extends Component {
     let animateClouds = setInterval(() => {
       numClouds++;
       placeCloud(numClouds);
-      if (numClouds > 45) {
+      if (numClouds > 30) {
         stopAnimation();
         console.log('stop producing clouds');
       }
