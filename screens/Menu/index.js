@@ -121,7 +121,7 @@ export default class Landing extends Component {
               </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('')}>
+              onPress={() => this.props.navigation.navigate('Compliment')}>
               <ImageBackground
                 style={[
                   styles.upsyImg,

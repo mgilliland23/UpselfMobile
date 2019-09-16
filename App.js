@@ -12,6 +12,7 @@ import Chat from './screens/Chat';
 import CalmCloud from './screens/CalmCloud';
 import Menu from './screens/Menu';
 import Memory from './screens/Memory';
+import Compliment from './screens/ComplimentChat';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
@@ -35,6 +36,9 @@ const MainNavigator = createStackNavigator(
     },
     Menu: {
       screen: Menu,
+    },
+    Compliment: {
+      screen: Compliment,
     },
   },
   {
