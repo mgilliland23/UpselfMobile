@@ -77,7 +77,7 @@ export default class FloatingClouds extends Component {
       }
     };
     placeCloud(numClouds);
-    //Generate a new cloud every 1.25 seconds
+    //Generate a new cloud every 2 seconds
     let animateClouds = setInterval(() => {
       numClouds++;
       placeCloud(numClouds);
@@ -85,7 +85,7 @@ export default class FloatingClouds extends Component {
         stopAnimation();
         console.log('stop producing clouds');
       }
-    }, 1500);
+    }, 2000);
 
     function stopAnimation() {
       clearInterval(animateClouds);
