@@ -20,19 +20,21 @@ export default class FloatingClouds extends Component {
   }
 
   createClouds = () => {
-    let cloudCount = 2;
-    console.log('width: ', win.width);
+    let numClouds = 3;
 
-    setInterval(() => {
-      cloudCount++;
+    //Pass a range for the position the new cloud should be rendered on the x-axis
+    //Make sure no two clouds render ontop of/ intersecting each other
+    let placeCloud = cloudCount => {
       console.log(cloudCount);
-      switch (cloudCount % 3) {
+
+      //Should we break the screen into 2 sections or 3?
+      switch (cloudCount % 2) {
         case 0:
           console.log('beginning third of screen');
           //Dont let the cloud be generated anywhere outside of the first third of the screen's x-axis
-          let max = win.width / 3 - 60;
+          let max = win.width / 2 - 120;
           //Make sure the entire cloud fits on the screen?
-          let min = -60;
+          let min = -10;
           //This is the value used to indicate where on the x axis the cloud will be rendered
           let xVal = Math.floor(Math.random() * (max - min + 1) + min);
           this.setState(prevState => ({
@@ -45,9 +47,9 @@ export default class FloatingClouds extends Component {
         case 1:
           console.log('center third of screen');
           //Make sure the entire cloud fits on the screen?=
-          max = win.width - 60;
+          max = win.width - 100;
           //Dont let the cloud be generated anywhere outside of the last third of the screen's x-axis
-          min = (win.width * 2) / 3;
+          min = win.width / 2;
           //This is the value used to indicate where on the x axis the cloud will be rendered
           xVal = Math.floor(Math.random() * (max - min + 1) + min);
           this.setState(prevState => ({
@@ -58,32 +60,36 @@ export default class FloatingClouds extends Component {
           }));
           break;
 
-        case 2:
-          //Dont let the cloud be generated anywhere outside of the second third of the screen's x-axis
-          max = (win.width * 2) / 3;
-          //Make sure the entire cloud fits on the screen?
-          min = win.width / 3;
-          //This is the value used to indicate where on the x axis the cloud will be rendered
-          xVal = Math.floor(Math.random() * (max - min + 1) + min);
-          this.setState(prevState => ({
-            cloudsArr: [
-              ...prevState.cloudsArr,
-              <Cloud xPosition={xVal} id={cloudCount} />,
-            ],
-          }));
-          break;
+        // case 2:
+        //   //Dont let the cloud be generated anywhere outside of the second third of the screen's x-axis
+        //   max = (win.width * 2) / 3;
+        //   //Make sure the entire cloud fits on the screen?
+        //   min = win.width / 3;
+        //   //This is the value used to indicate where on the x axis the cloud will be rendered
+        //   xVal = Math.floor(Math.random() * (max - min + 1) + min);
+        //   this.setState(prevState => ({
+        //     cloudsArr: [
+        //       ...prevState.cloudsArr,
+        //       <Cloud xPosition={xVal} id={cloudCount} />,
+        //     ],
+        //   }));
+        //   break;
       }
-      if (cloudCount > 20) {
-        // remove first cloud in the array, it is no longer on the screen by now
-
-        // this.setState({
-        //   cloudsArr: this.state.cloudsArr.filter(1),
-        // });
-        console.log('cloud removed from the array... I think?');
+    };
+    placeCloud(numClouds);
+    //Generate a new cloud every 1.25 seconds
+    let animateClouds = setInterval(() => {
+      numClouds++;
+      placeCloud(numClouds);
+      if (numClouds > 30) {
+        stopAnimation();
+        console.log('stop producing clouds');
       }
-    }, 2000);
+    }, 1500);
 
-    //After 15 seconds, begin removing clouds from the front of the array
+    function stopAnimation() {
+      clearInterval(animateClouds);
+    }
   };
 
   render() {

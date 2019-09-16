@@ -54,6 +54,7 @@ export default class StressCloud extends Component {
   state = {
     text: 'Now tap the circle and watch your stress dissapear',
     instructionsPosition: 0,
+    animationStarted: false,
   };
 
   componentDidMount() {
@@ -105,7 +106,7 @@ export default class StressCloud extends Component {
         useNativeDriver: true,
       }),
     ]).start(() => {
-      //Set the text state to the next instruction in the array
+      //Set the instruction text state to the next instruction in the array
       this.state.instructionsPosition = this.state.instructionsPosition + 1;
       this.setState({
         text: this.instructionsArr[this.state.instructionsPosition],
@@ -118,10 +119,14 @@ export default class StressCloud extends Component {
   };
 
   handleStressBallAnimation = () => {
-    //Animate ball shrinking by decreasing the stressball's scale from 1 to 0 over the course of 40sec
+    this.setState({
+      animationStarted: true,
+    });
+    //Animate ball shrinking by decreasing the stressball's scale from 1 to 0 over 40sec
     Animated.timing(this.stressBallScaleValue, {
       toValue: 0,
-      duration: 40000,
+      duration: 50000,
+      delay: 2000,
       easing: Easing.ease,
       useNativeDriver: true,
     }).start();
@@ -129,7 +134,7 @@ export default class StressCloud extends Component {
     //Animate text fading out
     Animated.timing(this.instructionsTextOpacity, {
       toValue: 0,
-      duration: 1500,
+      duration: 3500,
       easing: Easing.ease,
       useNativeDriver: true,
     }).start(() => {
@@ -143,9 +148,15 @@ export default class StressCloud extends Component {
   };
 
   render() {
+    const startAnim = this.state.animationStarted;
+    let clouds;
+    if (startAnim) {
+      clouds = <FloatingClouds />;
+    }
+
     return (
       <View style={styles.background}>
-        <FloatingClouds />
+        {clouds}
         <View style={styles.padding}>
           <FadeInView style={styles.topText} duration={3000}>
             <Animated.Text
