@@ -70,10 +70,21 @@ function checkwin(array) {
 }
 
 function alertwin(array, value) {
-  if (checkwin(array) == true) {
-    alert('you win! with ' + click / 2 + ' clicks');
-    for (var i = 1; i < array.length; i++) {
-      array[i] = false;
+    if (checkwin(array) == true) {
+        if (click/2 <= 10) {
+            alert("YOU WIN! \n It took you " + click / 2 + " clicks. \n\nThat is awesome congrats! 🙌👏👍");
+        }
+        else if (click/2 <= 13) {
+            alert("YOU WIN! \n It took you " + click / 2 + " clicks. \n\nThat is great... but I know you can do better! 🤗");
+        }
+        else {
+            alert("YOU WIN! \n It took you " + click / 2 + " clicks. \n\nI know you can do it in 10 clicks! 🤗😊");
+        }
+
+        for (var i = 1; i < array.length; i++) {
+            array[i] = false;
+        }
+        value.action(array);
     }
     value.action(array);
   }
