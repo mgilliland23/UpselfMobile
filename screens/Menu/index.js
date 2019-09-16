@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {
   StyleSheet,
@@ -8,6 +9,7 @@ import {
   TouchableOpacity,
   Animated,
   ImageBackground,
+  Linking,
 } from 'react-native';
 // import {Col, Row, Grid} from 'react-native-easy-grid';
 
@@ -207,7 +209,9 @@ export default class Landing extends Component {
               </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Swag')}>
+              onPress={() => {
+                Linking.openURL('https://upself-web.herokuapp.com/swag.html');
+              }}>
               <ImageBackground
                 style={[
                   styles.upsyImg,
