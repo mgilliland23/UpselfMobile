@@ -9,7 +9,7 @@
 import React, {Fragment, Component} from 'react';
 import Landing from './screens/Landing';
 import Chat from './screens/Chat';
-import DeStress from './screens/DeStress';
+import CalmCloud from './screens/CalmCloud';
 import Menu from './screens/Menu';
 import Memory from './screens/Memory';
 import {createAppContainer} from 'react-navigation';
@@ -27,8 +27,8 @@ const MainNavigator = createStackNavigator(
     Chat: {
       screen: Chat,
     },
-    DeStress: {
-      screen: DeStress,
+    CalmCloud: {
+      screen: CalmCloud,
     },
     Memory: {
       screen: Memory,

@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {View, TextInput, StyleSheet} from 'react-native';
+import {View, TextInput, Keyboard, StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   textInput: {
     color: 'white',
     alignSelf: 'center',
+    fontSize: 30,
   },
   inputBox: {
     color: 'white',
@@ -16,13 +17,15 @@ const styles = StyleSheet.create({
   },
 });
 
-function UselessTextInput(props) {
+function InputBox(props) {
   return (
     <TextInput
       {...props} // Inherit any props passed to it; e.g., multiline, numberOfLines below
       editable
-      autoFocus="true"
+      autoFocus={true}
+      returnKeyType="done"
       style={styles.textInput}
+      onSubmitEditing={Keyboard.dismiss}
     />
   );
 }
@@ -34,7 +37,7 @@ export default function StressTextInput() {
   // color.
   return (
     <View style={styles.inputBox}>
-      <UselessTextInput
+      <InputBox
         multiline
         numberOfLines={4}
         onChangeText={text => onChangeText(text)}

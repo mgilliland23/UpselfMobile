@@ -12,13 +12,7 @@ export default class Chat extends React.Component {
   static navigationOptions = ({navigation}) => {
     return {
       title: 'Chat with Upsy',
-      headerLeft: (
-        <Button
-          onPress={() => navigation.navigate('DeStress')}
-          title="Info"
-          color="#fff"
-        />
-      ),
+
       headerStyle: {
         backgroundColor: '#6bccf3',
       },
