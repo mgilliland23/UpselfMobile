@@ -28,6 +28,7 @@ export default StyleSheet.create({
   topText: {
     // display: 'flex',
     marginTop: 50,
+    marginBottom: 20,
     // flex: 1,
   },
   stressBallSection: {
