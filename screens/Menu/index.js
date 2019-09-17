@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {
   StyleSheet,
@@ -11,6 +10,7 @@ import {
   ImageBackground,
   Linking,
 } from 'react-native';
+import Swiper from 'react-native-swiper';
 // import {Col, Row, Grid} from 'react-native-easy-grid';
 
 const win = Dimensions.get('window');
@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
   upsyImg: {
     width: 100,
     height: 100,
+    alignSelf: 'center',
+  },
+  upsySwipe: {
+    width: 150,
+    height: 150,
     alignSelf: 'center',
   },
   getStartedText: {
@@ -58,24 +63,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Landing extends Component {
-  static navigationOptions = {
-    headerStyle: {
-      backgroundColor: '#6bccf3',
-    },
-    title: 'Home',
-    headerTintColor: '#f2f2f2',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-  };
+export default class Menu extends Component {
   constructor(props) {
     super(props);
-    this.animatedValue = new Animated.Value(0);
-  }
-
-  _onPressUpsy() {
-    alert('You tapped the button!');
+    // this.animatedValue = new Animated.Value(0);
   }
 
   render() {
@@ -93,13 +84,13 @@ export default class Landing extends Component {
         <View
           style={{
             display: 'flex',
-            flex: 4,
+            flex: 2,
           }}>
           <View
             style={{
               flex: 1,
               flexDirection: 'row',
-              justifyContent: 'space-between',
+              justifyContent: 'center',
             }}>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('Chat')}>
@@ -120,115 +111,74 @@ export default class Landing extends Component {
                 <Text style={styles.menuOptionLeftText}>Chat Upsy</Text>
               </ImageBackground>
             </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Compliment')}>
-              <ImageBackground
-                style={[
-                  styles.upsyImg,
-                  {
-                    display: 'flex',
-                    alignItems: 'center',
-                    width: '100%',
-                    height: '85%',
-                    justifyContent: 'center',
-                    alignSelf: 'center',
-                  },
-                ]}
-                source={require('../../assets/images/upsy_emo/upsy1_emo8.png')}
-                resizeMode={'contain'}>
-                <Text style={styles.menuOptionRightText}>Compliments</Text>
-              </ImageBackground>
-            </TouchableOpacity>
           </View>
           <View
             style={{
               flex: 1,
               flexDirection: 'row',
               justifyContent: 'space-between',
+              alignItems: 'center',
+              backgroundColor: '#F46DCE30',
+              marginBottom: 50,
             }}>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('')}>
-              <ImageBackground
-                style={[
-                  styles.upsyImg,
-                  {
-                    display: 'flex',
-                    alignItems: 'center',
-                    width: '100%',
-                    height: '85%',
-                    justifyContent: 'center',
-                  },
-                ]}
-                source={require('../../assets/images/upsy_emo/upsy1_emo7.png')}
-                resizeMode={'contain'}>
-                <Text style={styles.menuOptionLeftText}>Stress Test</Text>
-              </ImageBackground>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('CalmCloud')}>
-              <ImageBackground
-                style={[
-                  styles.upsyImg,
-                  {
-                    display: 'flex',
-                    alignItems: 'center',
-                    width: '100%',
-                    height: '85%',
-                    justifyContent: 'center',
-                  },
-                ]}
-                source={require('../../assets/images/upsy_emo/upsy1_emo1.png')}
-                resizeMode={'contain'}>
-                <Text style={styles.menuOptionRightText}>Calm Cloud</Text>
-              </ImageBackground>
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              flex: 1,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Memory')}>
-              <ImageBackground
-                style={[
-                  styles.upsyImg,
-                  {
-                    display: 'flex',
-                    alignItems: 'center',
-                    width: '100%',
-                    height: '85%',
-                    justifyContent: 'center',
-                    marginLeft: '5%',
-                  },
-                ]}
-                source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
-                resizeMode={'contain'}>
-                <Text style={styles.menuOptionLeftText}>Arcade</Text>
-              </ImageBackground>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                Linking.openURL('https://upself-web.herokuapp.com/swag.html');
-              }}>
-              <ImageBackground
-                style={[
-                  styles.upsyImg,
-                  {
-                    display: 'flex',
-                    alignItems: 'center',
-                    width: '100%',
-                    height: '85%',
-                    justifyContent: 'center',
-                    margin: '1%',
-                  },
-                ]}
-                source={require('../../assets/images/upsy_emo/upsy1_emo10.png')}
-                resizeMode={'contain'}>
-                <Text style={styles.menuOptionRightText}>Upsy Swag</Text>
-              </ImageBackground>
-            </TouchableOpacity>
+            <Swiper
+              // loop = {false}
+              showsPagination={true}
+              showsButton={true}>
+              <View style={{flexDirection: 'row'}}>
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('')}>
+                  <ImageBackground
+                    style={styles.upsySwipe}
+                    source={require('../../assets/images/upsy_emo/upsy1_emo8.png')}
+                    resizeMode={'contain'}>
+                    <Text style={styles.menuOptionRightText}>Compliments</Text>
+                  </ImageBackground>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('')}>
+                  <ImageBackground
+                    style={styles.upsySwipe}
+                    source={require('../../assets/images/upsy_emo/upsy1_emo7.png')}
+                    resizeMode={'contain'}>
+                    <Text style={styles.menuOptionLeftText}>Stress Test</Text>
+                  </ImageBackground>
+                </TouchableOpacity>
+              </View>
+              <View style={{flexDirection: 'row', flex: 1}}>
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('DeStress')}>
+                  <ImageBackground
+                    style={styles.upsySwipe}
+                    source={require('../../assets/images/upsy_emo/upsy1_emo1.png')}
+                    resizeMode={'contain'}>
+                    <Text style={styles.menuOptionRightText}>Calm Cloud</Text>
+                  </ImageBackground>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('Memory')}>
+                  <ImageBackground
+                    style={styles.upsySwipe}
+                    source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
+                    resizeMode={'contain'}>
+                    <Text style={styles.menuOptionLeftText}>Arcade</Text>
+                  </ImageBackground>
+                </TouchableOpacity>
+              </View>
+              <View>
+                <TouchableOpacity
+                  onPress={() => {
+                    Linking.openURL('https://upself-web.herokuapp.com/swag.html');
+                  }}>
+                  <ImageBackground
+                    style={styles.upsySwipe}
+                    source={require('../../assets/images/upsy_emo/upsy1_emo10.png')}
+                    resizeMode={'contain'}>
+                    <Text style={styles.menuOptionRightText}>Upsy Swag</Text>
+                  </ImageBackground>
+                </TouchableOpacity>
+              </View>
+            </Swiper>
           </View>
         </View>
       </View>
