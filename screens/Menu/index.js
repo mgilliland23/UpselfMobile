@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     alignSelf: 'center',
+    justifyContent: 'center',
   },
   getStartedText: {
     fontSize: 18,
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     marginTop: 45,
     marginRight: 55,
     marginLeft: 55,
-    color: 'white',
+    color: '#F46DCE',
     fontWeight: 'bold',
     alignSelf: 'center',
   },
@@ -125,7 +126,13 @@ export default class Menu extends Component {
               // loop = {false}
               showsPagination={true}
               showsButton={true}>
-              <View style={{flexDirection: 'row'}}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  flex: 1,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
                 <TouchableOpacity
                   onPress={() => this.props.navigation.navigate('')}>
                   <ImageBackground
@@ -145,7 +152,13 @@ export default class Menu extends Component {
                   </ImageBackground>
                 </TouchableOpacity>
               </View>
-              <View style={{flexDirection: 'row', flex: 1}}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  flex: 1,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
                 <TouchableOpacity
                   onPress={() => this.props.navigation.navigate('DeStress')}>
                   <ImageBackground
@@ -165,10 +178,18 @@ export default class Menu extends Component {
                   </ImageBackground>
                 </TouchableOpacity>
               </View>
-              <View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  flex: 1,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
                 <TouchableOpacity
                   onPress={() => {
-                    Linking.openURL('https://upself-web.herokuapp.com/swag.html');
+                    Linking.openURL(
+                      'https://upself-web.herokuapp.com/swag.html',
+                    );
                   }}>
                   <ImageBackground
                     style={styles.upsySwipe}
