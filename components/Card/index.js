@@ -73,6 +73,7 @@ function alertwin(array, value) {
         }
         value.action(array);
     }
+  }
 
 function moveupdate(imageUri, id) {
   move.push(imageUri); //this.props.imageUri
