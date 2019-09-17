@@ -55,10 +55,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   menuSwipeText: {
-    flex: 1,
     fontSize: 15,
     textAlign: 'center',
-    marginTop: '90%',
+    // marginTop: '88%',
     color: '#F46DCE',
     fontWeight: 'bold',
     justifyContent: 'center',
@@ -136,21 +135,25 @@ export default class Menu extends Component {
                 }}>
                 <TouchableOpacity
                   onPress={() => this.props.navigation.navigate('')}>
-                  <ImageBackground
-                    style={styles.upsySwipe}
-                    source={require('../../assets/images/upsy_emo/upsy1_emo8.png')}
-                    resizeMode={'contain'}>
+                  <View>
+                    <Image
+                      style={styles.upsySwipe}
+                      source={require('../../assets/images/upsy_emo/upsy1_emo8.png')}
+                      resizeMode={'contain'}
+                    />
                     <Text style={styles.menuSwipeText}>Compliments</Text>
-                  </ImageBackground>
+                  </View>
                 </TouchableOpacity>
                 <TouchableOpacity
                   onPress={() => this.props.navigation.navigate('')}>
-                  <ImageBackground
-                    style={styles.upsySwipe}
-                    source={require('../../assets/images/upsy_emo/upsy1_emo7.png')}
-                    resizeMode={'contain'}>
+                  <View>
+                    <Image
+                      style={styles.upsySwipe}
+                      source={require('../../assets/images/upsy_emo/upsy1_emo7.png')}
+                      resizeMode={'contain'}
+                    />
                     <Text style={styles.menuSwipeText}>Stress Test</Text>
-                  </ImageBackground>
+                  </View>
                 </TouchableOpacity>
               </View>
               <View
@@ -162,21 +165,23 @@ export default class Menu extends Component {
                 }}>
                 <TouchableOpacity
                   onPress={() => this.props.navigation.navigate('DeStress')}>
-                  <ImageBackground
+                  <Image
                     style={styles.upsySwipe}
                     source={require('../../assets/images/upsy_emo/upsy1_emo1.png')}
-                    resizeMode={'contain'}>
-                    <Text style={styles.menuSwipeText}>Calm Cloud</Text>
-                  </ImageBackground>
+                    resizeMode={'contain'}
+                  />
+                  <Text style={styles.menuSwipeText}>Calm Cloud</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   onPress={() => this.props.navigation.navigate('Memory')}>
-                  <ImageBackground
-                    style={styles.upsySwipe}
-                    source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
-                    resizeMode={'contain'}>
+                  <View>
+                    <Image
+                      style={styles.upsySwipe}
+                      source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
+                      resizeMode={'contain'}
+                    />
                     <Text style={styles.menuSwipeText}>Arcade</Text>
-                  </ImageBackground>
+                  </View>
                 </TouchableOpacity>
               </View>
               <View
@@ -192,12 +197,14 @@ export default class Menu extends Component {
                       'https://upself-web.herokuapp.com/swag.html',
                     );
                   }}>
-                  <ImageBackground
-                    style={styles.upsySwipe}
-                    source={require('../../assets/images/upsy_emo/upsy1_emo10.png')}
-                    resizeMode={'contain'}>
+                  <View>
+                    <Image
+                      style={styles.upsySwipe}
+                      source={require('../../assets/images/upsy_emo/upsy1_emo10.png')}
+                      resizeMode={'contain'}
+                    />
                     <Text style={styles.menuSwipeText}>Upsy Swag</Text>
-                  </ImageBackground>
+                  </View>
                 </TouchableOpacity>
               </View>
             </Swiper>
