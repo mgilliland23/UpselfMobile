@@ -39,28 +39,29 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   getStartedText: {
-    fontSize: 18,
+    fontSize: 20,
     textAlign: 'center',
-    marginBottom: 20,
-  },
-  menuOptionLeftText: {
-    fontSize: 15,
-    textAlign: 'center',
-    marginTop: 45,
-    marginRight: 55,
-    marginLeft: 55,
-    color: 'white',
     fontWeight: 'bold',
+    marginBottom: 20,
+    fontStyle: 'italic',
   },
-  menuOptionRightText: {
-    fontSize: 15,
+  menuChatText: {
+    fontSize: 20,
     textAlign: 'center',
-    marginTop: 45,
+    marginTop: -10,
     marginRight: 55,
     marginLeft: 55,
     color: '#F46DCE',
     fontWeight: 'bold',
-    alignSelf: 'center',
+  },
+  menuSwipeText: {
+    flex: 1,
+    fontSize: 15,
+    textAlign: 'center',
+    marginTop: '90%',
+    color: '#F46DCE',
+    fontWeight: 'bold',
+    justifyContent: 'center',
   },
 });
 
@@ -108,9 +109,9 @@ export default class Menu extends Component {
                   },
                 ]}
                 source={require('../../assets/images/upsy_emo/upsy1_emo2.png')}
-                resizeMode={'contain'}>
-                <Text style={styles.menuOptionLeftText}>Chat Upsy</Text>
-              </ImageBackground>
+                resizeMode={'contain'}
+              />
+              <Text style={styles.menuChatText}>Chat Upsy</Text>
             </TouchableOpacity>
           </View>
           <View
@@ -120,12 +121,12 @@ export default class Menu extends Component {
               justifyContent: 'space-between',
               alignItems: 'center',
               backgroundColor: '#F46DCE30',
-              marginBottom: 50,
+              marginBottom: 20,
             }}>
             <Swiper
               // loop = {false}
               showsPagination={true}
-              showsButton={true}>
+              showsButtons={true}>
               <View
                 style={{
                   flexDirection: 'row',
@@ -139,7 +140,7 @@ export default class Menu extends Component {
                     style={styles.upsySwipe}
                     source={require('../../assets/images/upsy_emo/upsy1_emo8.png')}
                     resizeMode={'contain'}>
-                    <Text style={styles.menuOptionRightText}>Compliments</Text>
+                    <Text style={styles.menuSwipeText}>Compliments</Text>
                   </ImageBackground>
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -148,7 +149,7 @@ export default class Menu extends Component {
                     style={styles.upsySwipe}
                     source={require('../../assets/images/upsy_emo/upsy1_emo7.png')}
                     resizeMode={'contain'}>
-                    <Text style={styles.menuOptionLeftText}>Stress Test</Text>
+                    <Text style={styles.menuSwipeText}>Stress Test</Text>
                   </ImageBackground>
                 </TouchableOpacity>
               </View>
@@ -165,7 +166,7 @@ export default class Menu extends Component {
                     style={styles.upsySwipe}
                     source={require('../../assets/images/upsy_emo/upsy1_emo1.png')}
                     resizeMode={'contain'}>
-                    <Text style={styles.menuOptionRightText}>Calm Cloud</Text>
+                    <Text style={styles.menuSwipeText}>Calm Cloud</Text>
                   </ImageBackground>
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -174,7 +175,7 @@ export default class Menu extends Component {
                     style={styles.upsySwipe}
                     source={require('../../assets/images/upsy_emo/upsy1_emo3.png')}
                     resizeMode={'contain'}>
-                    <Text style={styles.menuOptionLeftText}>Arcade</Text>
+                    <Text style={styles.menuSwipeText}>Arcade</Text>
                   </ImageBackground>
                 </TouchableOpacity>
               </View>
@@ -195,7 +196,7 @@ export default class Menu extends Component {
                     style={styles.upsySwipe}
                     source={require('../../assets/images/upsy_emo/upsy1_emo10.png')}
                     resizeMode={'contain'}>
-                    <Text style={styles.menuOptionRightText}>Upsy Swag</Text>
+                    <Text style={styles.menuSwipeText}>Upsy Swag</Text>
                   </ImageBackground>
                 </TouchableOpacity>
               </View>
