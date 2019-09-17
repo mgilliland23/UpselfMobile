@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Col, Row, Grid} from 'react-native-easy-grid';
+import React, { Component } from 'react';
+import { Col, Row, Grid } from 'react-native-easy-grid';
 import Card from '../../components/Card';
 
 //import "./Bounce_upsy.css";
@@ -85,17 +85,26 @@ export default class Memory extends Component {
         false,
         false,
       ],
+      ImagesData: images
+
       // data: {
       //   field1: false, field2: false, field3: false, field4: false, field5: false, field6: false, field7: false, field8: false, field9: false,
       //   field10: false, field11: false, field12: false
       // }
     };
     this.handler = this.handler.bind(this);
+    this.shuffledata = this.shuffledata.bind(this);
   }
 
   handler(data) {
     this.setState({
       messageShown: data,
+    });
+  }
+
+  shuffledata(data) {
+    this.setState({
+      ImagesData: data,
     });
   }
 
