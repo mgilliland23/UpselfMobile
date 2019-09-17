@@ -210,7 +210,9 @@ export default class Landing extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                Linking.openURL('https://upself-web.herokuapp.com/swag.html');
+                Linking.openURL(
+                  'https://upself-web.herokuapp.com/swag.html#!/all',
+                );
               }}>
               <ImageBackground
                 style={[
