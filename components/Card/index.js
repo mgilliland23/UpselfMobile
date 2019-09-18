@@ -30,6 +30,15 @@ var moveid = [0, 0];
 var click = 0;
 var animate = true;
 
+
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 function checkstatus(values) {
   if (click % 2 == 0) {
     if (move[0] == move[1] && move[0] != 0) {

@@ -106,26 +106,26 @@ export default class Memory extends Component {
 
           <Col>
 
-            <Card imageUri={this.state.imageData[0]} id={1} showme={this.state.messageShown[1]} action={this.handler} />
-            <Card imageUri={this.state.imageData[1]} id={2} showme={this.state.messageShown[2]} action={this.handler} />
-            <Card imageUri={this.state.imageData[2]} id={3} showme={this.state.messageShown[3]} action={this.handler} />
-            <Card imageUri={this.state.imageData[3]} id={4} showme={this.state.messageShown[4]} action={this.handler} />
+            <Card imageUri={this.state.imageData[0]} id={1} showme={this.state.messageShown[1]} action={this.handler} reshuffle={this.shuffleAgain}/>
+            <Card imageUri={this.state.imageData[1]} id={2} showme={this.state.messageShown[2]} action={this.handler} reshuffle={this.shuffleAgain}/>
+            <Card imageUri={this.state.imageData[2]} id={3} showme={this.state.messageShown[3]} action={this.handler} reshuffle={this.shuffleAgain}/>
+            <Card imageUri={this.state.imageData[3]} id={4} showme={this.state.messageShown[4]} action={this.handler} reshuffle={this.shuffleAgain}/>
 
           </Col>
 
           <Col>
-            <Card imageUri={this.state.imageData[4]} id={5} showme={this.state.messageShown[5]} action={this.handler} />
-            <Card imageUri={this.state.imageData[5]} id={6} showme={this.state.messageShown[6]} action={this.handler} />
-            <Card imageUri={this.state.imageData[6]} id={7} showme={this.state.messageShown[7]} action={this.handler} />
-            <Card imageUri={this.state.imageData[7]} id={8} showme={this.state.messageShown[8]} action={this.handler} />
+            <Card imageUri={this.state.imageData[4]} id={5} showme={this.state.messageShown[5]} action={this.handler} reshuffle={this.shuffleAgain}/>
+            <Card imageUri={this.state.imageData[5]} id={6} showme={this.state.messageShown[6]} action={this.handler} reshuffle={this.shuffleAgain}/>
+            <Card imageUri={this.state.imageData[6]} id={7} showme={this.state.messageShown[7]} action={this.handler} reshuffle={this.shuffleAgain}/>
+            <Card imageUri={this.state.imageData[7]} id={8} showme={this.state.messageShown[8]} action={this.handler} reshuffle={this.shuffleAgain}/>
           </Col>
 
 
           <Col>
-            <Card imageUri={this.state.imageData[8]} id={9} showme={this.state.messageShown[9]} action={this.handler} />
-            <Card imageUri={this.state.imageData[9]} id={10} showme={this.state.messageShown[10]} action={this.handler} />
-            <Card imageUri={this.state.imageData[10]} id={11} showme={this.state.messageShown[11]} action={this.handler} />
-            <Card imageUri={this.state.imageData[11]} id={12} showme={this.state.messageShown[12]} action={this.handler} />
+            <Card imageUri={this.state.imageData[8]} id={9} showme={this.state.messageShown[9]} action={this.handler} reshuffle={this.shuffleAgain}/>
+            <Card imageUri={this.state.imageData[9]} id={10} showme={this.state.messageShown[10]} action={this.handler} reshuffle={this.shuffleAgain}/>
+            <Card imageUri={this.state.imageData[10]} id={11} showme={this.state.messageShown[11]} action={this.handler} reshuffle={this.shuffleAgain}/>
+            <Card imageUri={this.state.imageData[11]} id={12} showme={this.state.messageShown[12]} action={this.handler} reshuffle={this.shuffleAgain}/>
           </Col>
 
         </Grid>
