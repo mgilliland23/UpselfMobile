@@ -90,7 +90,7 @@ function cleantiles(move0, move1, value) {
     showingE[move1] = false;
     value.action(showingE);
     animate = true;
-  }, 1000);
+  }, 2000);
 }
 
 
