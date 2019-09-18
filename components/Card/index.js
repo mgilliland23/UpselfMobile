@@ -90,10 +90,8 @@ function cleantiles(move0, move1, value) {
     showingE[move1] = false;
     value.action(showingE);
     animate = true;
-  }, 600);
+  }, 6000);
 }
-
-
 
 
 export default class Card extends Component {
@@ -145,48 +143,8 @@ export default class Card extends Component {
                   (
                     null
                   ),
-
-
-                // checkifwin(),
-                // delayaction2(this.props.imageUri, this.props.id).then(function (value) { this.props.action(showingE) }),
-
-                // delayaction(this.props.imageUri, this.props.id),
-
-                // this.props.actionTimer(showingE),
-                // .then(function (value) {
-
-                // })
-                // this.props.action(showingE),
-                // cleantiles(),
-                // this.props.showme = true,
-                // console.log(showingE[this.props.id]),
-                // console.log(showingE),
-                // console.log(this.props.id),
-                // state[this.props.imageUri] == true,
-                // console.log(this.props.imageUri),
-                // console.log(state[this.props.imageUri]),
-                // console.log(move),
-                // console.log(moveid),
-                // console.log(click),
-                // checktiles(this.props.imageUri)
-                // console.log(this)
-                // console.log(state),
-                // console.log(showing)
-                // matchmsg(),
-                // cleantiles(),
-                // checktiles(),
-                // (click % 2 == 0) ? this.props.action(showingE, true) : this.props.action(showingE, false),
-                // console.log(showingE),
-                // console.log(this),
-                // this.forceUpdate(),
               ]}
-              // onPress={() =>
-              //     this.setState({
-              //         isHidden: false
-              //     })
-              // }
-              // onPress={() => this.setState({ isHidden: true })}
-              // onPress={() => this.props.action(true)}
+
               style={styles.click} >
               <Image
                 style={[styles.click]}
@@ -198,16 +156,7 @@ export default class Card extends Component {
             :
             (
               <TouchableOpacity
-                // onPress={() => this.setState({ isHidden: false })}
-                // onPress={() => alert("test2")}
-                // onPress={() => value = false}
-                onPress={() => [
-                  // this.setState({ showing: false }),
-                  // showingE[this.props.id] = false,
-                  // console.log(showingE),
-                  // this.forceUpdate()
-                ]}
-
+                onPress={() => [null]}
                 style={styles.click}>
                 <Image
                   style={[styles.click]}
