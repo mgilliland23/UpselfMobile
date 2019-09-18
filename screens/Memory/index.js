@@ -81,6 +81,7 @@ export default class Memory extends Component {
       // }
     }
     this.handler = this.handler.bind(this);
+    this.shuffleAgain = this.shuffleAgain.bind(this);
   }
 
   handler(data) {
