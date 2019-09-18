@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 
 count = 0;
 
-images = [
+imagesO = [
   require('../../assets/images/check/check1.png'),
   require('../../assets/images/check/check2.png'),
   require('../../assets/images/check/check3.png'),
@@ -45,15 +45,15 @@ images = [
 ];
 
 
-// function shuffle(a) {
-//   for (let i = a.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1));
-//     [a[i], a[j]] = [a[j], a[i]];
-//   }
-//   return a;
-// }
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 
-// images = shuffle(imagesO);
+images = shuffle(imagesO);
 
 console.log(images);
 

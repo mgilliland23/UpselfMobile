@@ -65,7 +65,7 @@ function checkwin(array) {
   return true;
 }
 
-function alertwin(array, value) {
+function alertwin(array, value, images) {
   if (checkwin(array) == true) {
     if (click / 2 <= 10) {
       alert("YOU WIN! 🏆🥇 \n It took you " + click / 2 + " clicks. \n\nThat is a perfect score! 🙌👏👍");
@@ -79,6 +79,7 @@ function alertwin(array, value) {
 
     array = [null, false, false, false, false, false, false, false, false, false, false, false, false]; //state[0] is not considered
     value.action(array);
+    value.reshuffle(shuffle(images));
     showingE = array;
     move = [0, 0];
     moveid = [0, 0];
@@ -149,7 +150,7 @@ export default class Card extends Component {
                   console.log(moveid),
                   console.log(click),
                   checkstatus(this.props),
-                  alertwin(showingE, this.props)
+                  alertwin(showingE, this.props,this.props.rawdata)
                 ) :
                   (
                     null
