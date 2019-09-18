@@ -92,7 +92,7 @@ export default class Memory extends Component {
 
   shuffleAgain(data) {
     this.setState({
-      messageShown: data
+      imageData: data
     });
   }
 
