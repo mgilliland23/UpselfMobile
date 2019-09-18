@@ -71,16 +71,18 @@ function alertwin(array, value) {
       alert("YOU WIN! 🏆🥇 \n It took you " + click / 2 + " clicks. \n\nThat is a perfect score! 🙌👏👍");
     }
     else if (click / 2 <= 13) {
-      alert("YOU WIN! 🥈 \n It took you " + click / 2 + " clicks. \n\nThat is great... but I know you can do better! You can make it in 10 clicks 🤗");
+      alert("YOU WIN! 🥈 \n It took you " + click / 2 + " clicks. \n\nThat is great... but I know you can do better! \n\nYou can make it in 10 clicks 🤗");
     }
     else {
       alert("YOU WIN! 🥉 \n It took you " + click / 2 + " clicks. \n\nI know you can do it in 10 clicks! 🤗😊");
     }
 
-    for (var i = 1; i < array.length; i++) {
-      array[i] = false;
-    }
+    array = [null, false, false, false, false, false, false, false, false, false, false, false, false]; //state[0] is not considered
     value.action(array);
+    showingE = array;
+    move = [0, 0];
+    moveid = [0, 0];
+    click = 0;
   }
 }
 
