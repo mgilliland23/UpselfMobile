@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     width: win.width,
     padding: 1,
     // backgroundColor: '#f2f2f2',
-    backgroundColor: '#cef46d',
+    // backgroundColor: '#cef46d',
   },
   logo: {
     flex: 1,
@@ -61,17 +61,57 @@ const styles = StyleSheet.create({
 });
 
 export default class Menu extends Component {
+  state = {
+    color: ['rgba(255,72,196,0.7)', 'rgba(43,209,252,0.7)'],
+    colors: [
+      ['rgba(255,72,196,0.7)', 'rgba(43,209,252,0.7)'],
+      ['rgba(43,209,252,0.7)', 'rgba(243,234,95,0.7)'],
+      ['rgba(243,234,95,0.7)', 'rgba(192,77,249,0.7)'],
+      ['rgba(192,77,249,0.7)', 'rgba(255,72,196,0.7)'],
+    ],
+    nextIndex: 0,
+  };
+
+  componentWillMount() {
+    this.animatedValue = new Animated.Value(0);
+  }
+
+  animateColor() {
+    Animated.timing(this.animatedValue, {
+      toValue: 300,
+      duration: 3000,
+    }).start();
+  }
+
+  componentDidMount() {
+    this.animateColor();
+
+    setInterval(() => {
+      this.setState({color: this.state.colors[this.state.nextIndex]}, () => {
+        this.animateColor();
+        if (this.state.nextIndex < this.state.colors.length) {
+          this.setState({nextIndex: this.state.nextIndex + 1});
+        } else {
+          this.setState({nextIndex: 0});
+        }
+      });
+    }, 3000);
+  }
+
   static navigationOptions = {
     header: null,
   };
-  constructor(props) {
-    super(props);
-    // this.animatedValue = new Animated.Value(0);
-  }
 
   render() {
+    const interpolateColor = this.animatedValue.interpolate({
+      inputRange: [0, 600],
+      outputRange: this.state.color,
+    });
+    const animatedStyle = {
+      backgroundColor: interpolateColor,
+    };
     return (
-      <View style={styles.background}>
+      <Animated.View style={[styles.background, animatedStyle]}>
         <Image
           style={styles.logo}
           source={require('../../assets/images/menu_icons/logo_upself_text.png')}
@@ -227,7 +267,7 @@ export default class Menu extends Component {
             </View>
           </Swiper>
         </View>
-      </View>
+      </Animated.View>
     );
   }
 }
