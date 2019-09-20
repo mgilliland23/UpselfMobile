@@ -15,43 +15,63 @@ import Memory from './screens/Memory';
 import Compliment from './screens/ComplimentChat';
 import Splash from './screens/SplashScreen';
 import {createAppContainer} from 'react-navigation';
-import {
-  createStackNavigator,
-  createSwitchNavigator,
-} from 'react-navigation-stack';
+import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
+
+import {createStackNavigator} from 'react-navigation-stack';
 
 //Disable the yellow warning boxes in the emulator
 console.disableYellowBox = true;
 
 //Set up routes and the navigator for the app
-const MainNavigator = createStackNavigator(
+const MainNavigator = createMaterialBottomTabNavigator(
   {
-    Landing: {
-      screen: Landing,
+    // Landing: {
+    //   screen: Landing,
+    // },
+    Menu: {
+      screen: Menu,
+      title: 'Menu',
+      navigationOptions: {
+        tabBarLabel: 'Menu',
+        tabBarColor: '#6bccf3',
+        activeColor: '#fff',
+        inactiveColor: '#fff',
+      },
+
+      // tabBarIcon: () => { focused: boolean, horizontal: boolean, tintColor: string }
     },
     Chat: {
       screen: Chat,
+      navigationOptions: {
+        tabBarLabel: 'Chat',
+        tabBarColor: '#f46dce',
+        activeColor: '#fff',
+        inactiveColor: '#fff',
+      },
     },
     CalmCloud: {
       screen: CalmCloud,
+      navigationOptions: {
+        tabBarLabel: 'Cart',
+        tabBarColor: '#000',
+      },
     },
     Memory: {
       screen: Memory,
     },
-    Menu: {
-      screen: Menu,
-    },
-    Compliment: {
-      screen: Compliment,
-    },
-    Splash: {
-      screen: Splash,
-    },
+
+    // Compliment: {
+    //   screen: Compliment,
+    // },
+    // Splash: {
+    //   screen: Splash,
+    // },
   },
   {
-    //TODO: Check if this is the first time the user has used this app,
-    //if so, initial route should be Landing, else initial route should be Home
-    initialRouteName: 'Splash',
+    //Render the splash screen on app load, which redirects to menu after 2 seconds
+    initialRouteName: 'Menu',
+
+    // barStyle: {backgroundColor: '#6bccf3'},
   },
 );
 
