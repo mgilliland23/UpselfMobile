@@ -13,8 +13,12 @@ import CalmCloud from './screens/CalmCloud';
 import Menu from './screens/Menu';
 import Memory from './screens/Memory';
 import Compliment from './screens/ComplimentChat';
+import Splash from './screens/SplashScreen';
 import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
+import {
+  createStackNavigator,
+  createSwitchNavigator,
+} from 'react-navigation-stack';
 
 //Disable the yellow warning boxes in the emulator
 console.disableYellowBox = true;
@@ -40,11 +44,14 @@ const MainNavigator = createStackNavigator(
     Compliment: {
       screen: Compliment,
     },
+    Splash: {
+      screen: Splash,
+    },
   },
   {
     //TODO: Check if this is the first time the user has used this app,
     //if so, initial route should be Landing, else initial route should be Home
-    initialRouteName: 'Menu',
+    initialRouteName: 'Splash',
   },
 );
 

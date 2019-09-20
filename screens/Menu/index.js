@@ -65,6 +65,9 @@ const styles = StyleSheet.create({
 });
 
 export default class Menu extends Component {
+  static navigationOptions = {
+    header: null,
+  };
   constructor(props) {
     super(props);
     // this.animatedValue = new Animated.Value(0);
@@ -164,7 +167,7 @@ export default class Menu extends Component {
                   alignItems: 'center',
                 }}>
                 <TouchableOpacity
-                  onPress={() => this.props.navigation.navigate('DeStress')}>
+                  onPress={() => this.props.navigation.navigate('CalmCloud')}>
                   <Image
                     style={styles.upsySwipe}
                     source={require('../../assets/images/upsy_emo/upsy1_emo1.png')}
