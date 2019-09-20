@@ -29,6 +29,37 @@ const MainNavigator = createMaterialBottomTabNavigator(
     // Landing: {
     //   screen: Landing,
     // },
+
+    Chat: {
+      screen: Chat,
+      navigationOptions: {
+        tabBarLabel: 'Chat',
+        tabBarColor: '#6de5f4',
+        activeColor: '#fff',
+        inactiveColor: '#fff',
+        tabBarIcon: <EnIcon name="chat" size={22} color="#fff" />,
+      },
+    },
+    CalmCloud: {
+      screen: CalmCloud,
+
+      navigationOptions: {
+        tabBarLabel: 'Calm Cloud',
+        tabBarColor: '#6d8bf4',
+        activeColor: '#fff',
+        tabBarIcon: <EnIcon name="cloud" size={22} color="#fff" />,
+      },
+    },
+    Memory: {
+      screen: Memory,
+
+      navigationOptions: {
+        tabBarLabel: 'Arcade',
+        tabBarColor: '#936df4',
+        activeColor: '#fff',
+        tabBarIcon: <Icon name="brain" size={22} color="#fff" />,
+      },
+    },
     Menu: {
       screen: Menu,
       title: 'Menu',
@@ -41,36 +72,6 @@ const MainNavigator = createMaterialBottomTabNavigator(
       },
 
       // tabBarIcon: () => { focused: boolean, horizontal: boolean, tintColor: string }
-    },
-    Chat: {
-      screen: Chat,
-      navigationOptions: {
-        tabBarLabel: 'Chat',
-        tabBarColor: '#f46dce',
-        activeColor: '#fff',
-        inactiveColor: '#fff',
-        tabBarIcon: <EnIcon name="chat" size={22} color="#fff" />,
-      },
-    },
-    CalmCloud: {
-      screen: CalmCloud,
-
-      navigationOptions: {
-        tabBarLabel: 'Calm Cloud',
-        tabBarColor: '#000',
-        activeColor: '#fff',
-        tabBarIcon: <EnIcon name="cloud" size={22} color="#fff" />,
-      },
-    },
-    Memory: {
-      screen: Memory,
-
-      navigationOptions: {
-        tabBarLabel: 'Arcade',
-        tabBarColor: '#6bccf3',
-        activeColor: '#fff',
-        tabBarIcon: <Icon name="brain" size={22} color="#fff" />,
-      },
     },
 
     // Compliment: {
