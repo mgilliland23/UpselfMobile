@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '80%',
     alignSelf: 'center',
-    marginTop: '10%',
+    marginTop: '20%',
     marginBottom: -60,
   },
   upsyImg: {
@@ -61,62 +61,59 @@ const styles = StyleSheet.create({
   },
 });
 
+var counterInterval = 4;
+
 export default class Menu extends Component {
-  state = {
-    color: ['rgba(255,72,196,0.8)', 'rgba(43,209,252,0.8)'],
-    colors: [
-      ['rgba(255,72,196,0.8)', 'rgba(43,209,252,0.8)'],
-      ['rgba(43,209,252,0.8)', 'rgba(243,234,95,0.8)'],
-      ['rgba(243,234,95,0.8)', 'rgba(192,77,249,0.8)'],
-      ['rgba(192,77,249,0.8)', 'rgba(255,72,196,0.8)'],
-    ],
-    nextIndex: 0,
-  };
+  // state = {
+  //   color: ['rgba(255,72,196,0.8)', 'rgba(43,209,252,0.8)'],
+  //   colors: [
+  //     ['rgba(255,72,196,0.8)', 'rgba(43,209,252,0.8)'],
+  //     ['rgba(43,209,252,0.8)', 'rgba(243,234,95,0.8)'],
+  //     ['rgba(243,234,95,0.8)', 'rgba(192,77,249,0.8)'],
+  //     ['rgba(192,77,249,0.8)', 'rgba(255,72,196,0.8)'],
+  //   ],
+  //   // nextIndex: 0,
+  // };
 
-  componentWillMount() {
-    this.animatedValue = new Animated.Value(0);
-  }
+  // componentWillMount() {
+  //   this.animatedValue = new Animated.Value(0);
+  // }
 
-  animateColor() {
-    Animated.timing(this.animatedValue, {
-      toValue: 500,
-      duration: 3000,
-      easing: Easing.linear,
-    }).start();
-  }
+  // animateColor() {
+  //   Animated.timing(this.animatedValue, {
+  //     toValue: 500,
+  //     duration: 3000,
+  //     // easing: Easing.linear,
+  //   }).start();
+  // }
 
-  componentDidMount() {
-    this.animateColor();
+  // componentDidMount() {
+  //   // this.animateColor();
 
-    setInterval(() => {
-      this.setState({color: this.state.colors[this.state.nextIndex]}, () => {
-        this.animateColor();
-        this.setState({
-          nextIndex: this.state.nextIndex % this.state.colors.length,
-        });
-        // if (this.state.nextIndex < this.state.colors.length) {
-        //   this.setState({nextIndex: this.state.nextIndex + 1});
-        // } else {
-        //   this.setState({nextIndex: 0});
-        // }
-      });
-    }, 6000);
-  }
+  //   setInterval(() => {
+  //     // console.log("set interval");
+  //     // console.log(this.state.colors.length);
+  //     // this.setState({color: this.state.colors[counterInterval]});
+  //     this.setState({color: this.state.colors[counterInterval % 4]});
+  //     counterInterval++;
+  //   }, 1000);
+  // }
 
   static navigationOptions = {
     header: null,
   };
 
   render() {
-    const interpolateColor = this.animatedValue.interpolate({
-      inputRange: [0, 300],
-      outputRange: this.state.color,
-    });
-    const animatedStyle = {
-      backgroundColor: interpolateColor,
-    };
+    // const interpolateColor = this.animatedValue.interpolate({
+    //   inputRange: [0, 300],
+    //   outputRange: this.state.color,
+    // });
+    // const animatedStyle = {
+    //   backgroundColor: interpolateColor,
+    // };
     return (
-      <Animated.View style={[styles.background, animatedStyle]}>
+      // <Animated.View style={[styles.background, animatedStyle]}>
+      <Animated.View style={styles.background}>
         <Image
           style={styles.logo}
           source={require('../../assets/images/menu_icons/logo_upself_text.png')}
