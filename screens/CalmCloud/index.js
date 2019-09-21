@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import StressTextInput from '../../components/StressTextInput';
 import FadeInView from '../../components/FadeInView';
 import FloatingClouds from '../../components/FloatingClouds';
-``;
 import {
   View,
   ImageBackground,
@@ -173,9 +172,9 @@ export default class StressCloud extends Component {
                   },
                 ]}
                 source={require('../../assets/images/circle.png')}
-                resizeMode={'contain'}
-              />
-              <StressTextInput />
+                resizeMode={'contain'}>
+                <StressTextInput />
+              </AnimatedImage>
             </TouchableOpacity>
           </FadeInView>
 

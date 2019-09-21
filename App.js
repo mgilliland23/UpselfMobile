@@ -15,6 +15,8 @@ import Memory from './screens/Memory';
 import Compliment from './screens/ComplimentChat';
 import Splash from './screens/SplashScreen';
 import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
+
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 //import { MaterialIcons } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -24,7 +26,7 @@ import EnIcon from 'react-native-vector-icons/Entypo';
 console.disableYellowBox = true;
 
 //Set up routes and the navigator for the app
-const MainNavigator = createMaterialBottomTabNavigator(
+const BottomBarNavigator = createMaterialBottomTabNavigator(
   {
     // Landing: {
     //   screen: Landing,
@@ -70,17 +72,7 @@ const MainNavigator = createMaterialBottomTabNavigator(
         inactiveColor: '#fff',
         tabBarIcon: <EnIcon name="menu" size={22} color="#fff" />,
       },
-
-      // tabBarIcon: () => { focused: boolean, horizontal: boolean, tintColor: string }
     },
-    // Splash: {
-    //   screen: Splash,
-    //   navigationOptions: {
-    //     tabBarVisible: false,
-    //     tabBarColor: '#6bccf3',
-    //     activeColor: '#6bccf3',
-    //   },
-    // },
 
     // Compliment: {
     //   screen: Compliment,
@@ -90,10 +82,23 @@ const MainNavigator = createMaterialBottomTabNavigator(
     //Render the splash screen on app load, which redirects to menu after 2 seconds
     initialRouteName: 'Menu',
     resetOnBlur: true,
-    //paths: {Menu: {screen: Menu}},
-
-    // barStyle: {backgroundColor: '#6bccf3'},
   },
+);
+
+//Wrap the bottom tab navigator in a stack navigator to get splash screen working
+const MainNavigator = createStackNavigator(
+  {
+    BottomBarNavigator,
+    Splash: {
+      screen: Splash,
+      navigationOptions: {
+        tabBarVisible: false,
+        tabBarColor: '#6bccf3',
+        activeColor: '#6bccf3',
+      },
+    },
+  },
+  {headerMode: 'none', initialRouteName: 'Splash'},
 );
 
 const App = createAppContainer(MainNavigator);
