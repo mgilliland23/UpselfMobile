@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 export default class StressTest extends Component {
   // DASS21 Qs
   dass_questions = [
-    ['Do you find it hard to wind down?', 's'],
+    ['I found it hard to wind down', 's'],
     ['I was aware of dryness of my mouth', 'a'],
     ['I couldn’t seem to experience any positive feeling at all', 'd'],
     [
@@ -89,14 +89,20 @@ export default class StressTest extends Component {
               source={require('../../assets/images/stresstest/upsyDABss.png')}
               resizeMode={'contain'}
               width="95%">
-              <Text style={styles.question}>{this.dass_questions[3][0]}</Text>
+              <Text style={styles.question}>{this.dass_questions[14][0]}</Text>
             </ImageBackground>
           </View>
         </View>
         <View />
 
-        <View style={{flex: 1, justifyContent: 'center'}}>
-          <Text>Answers</Text>
+        <View
+          style={{flex: 1, justifyContent: 'center', backgroundColor: 'green'}}>
+          <View>
+            <Text>Your Answers</Text>
+          </View>
+          <View>
+            <Text>Answers</Text>
+          </View>
         </View>
       </View>
     );
