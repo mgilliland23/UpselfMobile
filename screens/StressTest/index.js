@@ -23,15 +23,16 @@ const styles = StyleSheet.create({
     height: '100%',
     justifyContent: 'center',
     alignSelf: 'center',
-    backgroundColor: 'pink',
+    backgroundColor: 'yellow',
   },
   question: {
     flex: 1,
     width: '100%',
     marginTop: '30%',
-    marginLeft: '5%',
+    marginLeft: '10%',
     marginRight: '5%',
     fontSize: 20,
+    fontWeight: 'bold',
     alignSelf: 'center',
   },
 });
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
 export default class StressTest extends Component {
   // DASS21 Qs
   dass_questions = [
-    ['I found it hard to wind down', 's'],
+    ['Do you find it hard to wind down?', 's'],
     ['I was aware of dryness of my mouth', 'a'],
     ['I couldn’t seem to experience any positive feeling at all', 'd'],
     [
