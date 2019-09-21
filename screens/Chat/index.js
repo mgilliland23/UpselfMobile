@@ -9,19 +9,6 @@ export default class Chat extends React.Component {
   constructor(props) {
     super(props);
   }
-  static navigationOptions = ({navigation}) => {
-    return {
-      title: 'Chat with Upsy',
-
-      headerStyle: {
-        backgroundColor: '#6bccf3',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    };
-  };
 
   state = {
     messages: [],

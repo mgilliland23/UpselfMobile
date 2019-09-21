@@ -73,10 +73,6 @@ const MainNavigator = createMaterialBottomTabNavigator(
 
       // tabBarIcon: () => { focused: boolean, horizontal: boolean, tintColor: string }
     },
-
-    // Compliment: {
-    //   screen: Compliment,
-    // },
     // Splash: {
     //   screen: Splash,
     //   navigationOptions: {
@@ -85,11 +81,16 @@ const MainNavigator = createMaterialBottomTabNavigator(
     //     activeColor: '#6bccf3',
     //   },
     // },
+
+    // Compliment: {
+    //   screen: Compliment,
+    // },
   },
   {
     //Render the splash screen on app load, which redirects to menu after 2 seconds
     initialRouteName: 'Menu',
-    paths: [Menu, Chat, CalmCloud, Memory],
+    resetOnBlur: true,
+    //paths: {Menu: {screen: Menu}},
 
     // barStyle: {backgroundColor: '#6bccf3'},
   },
