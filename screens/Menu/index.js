@@ -9,6 +9,7 @@ import {
   Animated,
   ImageBackground,
   Linking,
+  Easing,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 // import {Col, Row, Grid} from 'react-native-easy-grid';
@@ -62,12 +63,12 @@ const styles = StyleSheet.create({
 
 export default class Menu extends Component {
   state = {
-    color: ['rgba(255,72,196,0.7)', 'rgba(43,209,252,0.7)'],
+    color: ['rgba(255,72,196,0.8)', 'rgba(43,209,252,0.8)'],
     colors: [
-      ['rgba(255,72,196,0.7)', 'rgba(43,209,252,0.7)'],
-      ['rgba(43,209,252,0.7)', 'rgba(243,234,95,0.7)'],
-      ['rgba(243,234,95,0.7)', 'rgba(192,77,249,0.7)'],
-      ['rgba(192,77,249,0.7)', 'rgba(255,72,196,0.7)'],
+      ['rgba(255,72,196,0.8)', 'rgba(43,209,252,0.8)'],
+      ['rgba(43,209,252,0.8)', 'rgba(243,234,95,0.8)'],
+      ['rgba(243,234,95,0.8)', 'rgba(192,77,249,0.8)'],
+      ['rgba(192,77,249,0.8)', 'rgba(255,72,196,0.8)'],
     ],
     nextIndex: 0,
   };
@@ -78,8 +79,9 @@ export default class Menu extends Component {
 
   animateColor() {
     Animated.timing(this.animatedValue, {
-      toValue: 300,
+      toValue: 500,
       duration: 3000,
+      easing: Easing.linear,
     }).start();
   }
 
@@ -89,13 +91,16 @@ export default class Menu extends Component {
     setInterval(() => {
       this.setState({color: this.state.colors[this.state.nextIndex]}, () => {
         this.animateColor();
-        if (this.state.nextIndex < this.state.colors.length) {
-          this.setState({nextIndex: this.state.nextIndex + 1});
-        } else {
-          this.setState({nextIndex: 0});
-        }
+        this.setState({
+          nextIndex: this.state.nextIndex % this.state.colors.length,
+        });
+        // if (this.state.nextIndex < this.state.colors.length) {
+        //   this.setState({nextIndex: this.state.nextIndex + 1});
+        // } else {
+        //   this.setState({nextIndex: 0});
+        // }
       });
-    }, 3000);
+    }, 6000);
   }
 
   static navigationOptions = {
@@ -104,7 +109,7 @@ export default class Menu extends Component {
 
   render() {
     const interpolateColor = this.animatedValue.interpolate({
-      inputRange: [0, 600],
+      inputRange: [0, 300],
       outputRange: this.state.color,
     });
     const animatedStyle = {
