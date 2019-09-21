@@ -10,8 +10,8 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="420mm"
-   height="210mm"
-   viewBox="0 0 420 210"
+   height="310mm"
+   viewBox="0 0 420 310"
    version="1.1"
    id="svg5113"
    sodipodi:docname="upsyDABss.svg"
@@ -29,7 +29,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="-70"
+     inkscape:cx="-77.142857"
      inkscape:cy="560"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -55,23 +55,23 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-87)">
+     transform="translate(0,13)">
     <ellipse
-       style="fill:#f2f2f2;fill-opacity:1;stroke:#000000;stroke-width:0.3;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:#f2f2f2;fill-opacity:1;stroke:#000000;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4976"
        cx="136.4054"
        cy="223.5139"
        rx="6.7294993"
        ry="6.56321" />
     <ellipse
-       style="fill:#f2f2f2;fill-opacity:1;stroke:#000000;stroke-width:0.3;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:#f2f2f2;fill-opacity:1;stroke:#000000;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4976-6"
        cx="117.17739"
        cy="226.91173"
        rx="4.0457869"
        ry="3.9458134" />
     <ellipse
-       style="fill:#f2f2f2;fill-opacity:1;stroke:#000000;stroke-width:0.3;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:#f2f2f2;fill-opacity:1;stroke:#000000;stroke-width:0.30000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4976-3"
        cx="100.65662"
        cy="228.79817"
@@ -153,12 +153,12 @@
       </g>
     </g>
     <rect
-       style="fill:#f2f2f2;fill-opacity:1;stroke:#000000;stroke-width:0.3;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:#f2f2f2;fill-opacity:1;stroke:#000000;stroke-width:0.41022524;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect5061"
        width="399.62732"
-       height="115.10387"
+       height="215.22473"
        x="10.719072"
-       y="95.721146"
-       ry="31.827959" />
+       y="-4.3997221"
+       ry="59.512894" />
   </g>
 </svg>
