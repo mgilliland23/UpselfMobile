@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
 });
 
-var counterInterval = 4;
+// var counterInterval = 4;
 
 export default class Menu extends Component {
   // state = {
