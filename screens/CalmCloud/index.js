@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import StressTextInput from '../../components/StressTextInput';
 import FadeInView from '../../components/FadeInView';
 import FloatingClouds from '../../components/FloatingClouds';
-
 import {
   View,
   ImageBackground,
@@ -23,17 +22,6 @@ UIManager.setLayoutAnimationEnabledExperimental &&
   UIManager.setLayoutAnimationEnabledExperimental(true);
 
 export default class StressCloud extends Component {
-  static navigationOptions = {
-    headerStyle: {
-      backgroundColor: '#6bccf3',
-    },
-    title: 'Calm Cloud',
-    headerTintColor: '#f2f2f2',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-  };
-
   constructor(props) {
     super(props);
     //Prop to hold the animation value of the stressballs height and width
@@ -48,14 +36,12 @@ export default class StressCloud extends Component {
       'fifth instruction',
     ];
 
-    //this.state = {};
+    this.state = {
+      text: 'Now tap the circle and watch your stress dissapear',
+      instructionsPosition: 0,
+      animationStarted: false,
+    };
   }
-
-  state = {
-    text: 'Now tap the circle and watch your stress dissapear',
-    instructionsPosition: 0,
-    animationStarted: false,
-  };
 
   componentDidMount() {
     //Add event listener for when the user presses the 'done' button on the keyboard
@@ -70,13 +56,6 @@ export default class StressCloud extends Component {
   _keyboardDidHide = () => {
     //Fade out top text 'what is causing stress...'
     Animated.sequence([
-      Animated.timing(this.causeTextOpacity, {
-        toValue: 0,
-        duration: 1500,
-        easing: Easing.ease,
-        useNativeDriver: true,
-      }).start(),
-
       //Fade in instruction text: 'tap to make stress dissapear....'
       Animated.timing(this.instructionsTextOpacity, {
         toValue: 1,
@@ -91,6 +70,12 @@ export default class StressCloud extends Component {
   //Fade instructions in and out while the stressball is shrinking
   animateInstructions = () => {
     Animated.sequence([
+      Animated.timing(this.causeTextOpacity, {
+        toValue: 0,
+        duration: 1500,
+        easing: Easing.ease,
+        useNativeDriver: true,
+      }),
       //Fade the next instruction text back in,
       Animated.timing(this.instructionsTextOpacity, {
         toValue: 1,
@@ -163,7 +148,7 @@ export default class StressCloud extends Component {
             <Animated.Text
               style={[styles.getStartedText, {opacity: this.causeTextOpacity}]}>
               {' '}
-              Type in something that is causing you stress{' '}
+              Tap the stressball to type in something that is causing you stress{' '}
             </Animated.Text>
           </FadeInView>
 
