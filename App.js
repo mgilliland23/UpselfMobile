@@ -16,8 +16,9 @@ import Compliment from './screens/ComplimentChat';
 import Splash from './screens/SplashScreen';
 import {createAppContainer} from 'react-navigation';
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
-
-import {createStackNavigator} from 'react-navigation-stack';
+//import { MaterialIcons } from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import EnIcon from 'react-native-vector-icons/Entypo';
 
 //Disable the yellow warning boxes in the emulator
 console.disableYellowBox = true;
@@ -28,6 +29,37 @@ const MainNavigator = createMaterialBottomTabNavigator(
     // Landing: {
     //   screen: Landing,
     // },
+
+    Chat: {
+      screen: Chat,
+      navigationOptions: {
+        tabBarLabel: 'Chat',
+        tabBarColor: '#6de5f4',
+        activeColor: '#fff',
+        inactiveColor: '#fff',
+        tabBarIcon: <EnIcon name="chat" size={22} color="#fff" />,
+      },
+    },
+    CalmCloud: {
+      screen: CalmCloud,
+
+      navigationOptions: {
+        tabBarLabel: 'Calm Cloud',
+        tabBarColor: '#6d8bf4',
+        activeColor: '#fff',
+        tabBarIcon: <EnIcon name="cloud" size={22} color="#fff" />,
+      },
+    },
+    Memory: {
+      screen: Memory,
+
+      navigationOptions: {
+        tabBarLabel: 'Arcade',
+        tabBarColor: '#936df4',
+        activeColor: '#fff',
+        tabBarIcon: <Icon name="brain" size={22} color="#fff" />,
+      },
+    },
     Menu: {
       screen: Menu,
       title: 'Menu',
@@ -36,40 +68,29 @@ const MainNavigator = createMaterialBottomTabNavigator(
         tabBarColor: '#6bccf3',
         activeColor: '#fff',
         inactiveColor: '#fff',
+        tabBarIcon: <EnIcon name="menu" size={22} color="#fff" />,
       },
 
       // tabBarIcon: () => { focused: boolean, horizontal: boolean, tintColor: string }
     },
-    Chat: {
-      screen: Chat,
-      navigationOptions: {
-        tabBarLabel: 'Chat',
-        tabBarColor: '#f46dce',
-        activeColor: '#fff',
-        inactiveColor: '#fff',
-      },
-    },
-    CalmCloud: {
-      screen: CalmCloud,
-      navigationOptions: {
-        tabBarLabel: 'Cart',
-        tabBarColor: '#000',
-      },
-    },
-    Memory: {
-      screen: Memory,
-    },
+    // Splash: {
+    //   screen: Splash,
+    //   navigationOptions: {
+    //     tabBarVisible: false,
+    //     tabBarColor: '#6bccf3',
+    //     activeColor: '#6bccf3',
+    //   },
+    // },
 
     // Compliment: {
     //   screen: Compliment,
-    // },
-    // Splash: {
-    //   screen: Splash,
     // },
   },
   {
     //Render the splash screen on app load, which redirects to menu after 2 seconds
     initialRouteName: 'Menu',
+    resetOnBlur: true,
+    //paths: {Menu: {screen: Menu}},
 
     // barStyle: {backgroundColor: '#6bccf3'},
   },
