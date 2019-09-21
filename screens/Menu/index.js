@@ -233,7 +233,7 @@ export default class Menu extends Component {
               }}>
               <View>
                 <TouchableOpacity
-                  onPress={() => this.props.navigation.navigate('')}>
+                  onPress={() => this.props.navigation.navigate('StressTest')}>
                   <Image
                     style={styles.upsyImg}
                     source={require('../../assets/images/menu_icons/stresstest.png')}

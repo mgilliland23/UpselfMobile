@@ -98,6 +98,14 @@ const MainNavigator = createStackNavigator(
         activeColor: '#6bccf3',
       },
     },
+    StressTest: {
+      screen: StressTest,
+      navigationOptions: {
+        tabBarVisible: false,
+        tabBarColor: '#6bccf3',
+        activeColor: '#6bccf3',
+      },
+    },
   },
   {headerMode: 'none', initialRouteName: 'Splash'},
 );
