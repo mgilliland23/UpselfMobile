@@ -151,6 +151,7 @@ export default class Menu extends Component {
               </View>
               <View>
                 <Text style={styles.menuSwipeText}>Chat</Text>
+                <Text style={styles.getStartedText}>Talk it out with Upsy!</Text>
               </View>
             </View>
             <View
@@ -173,6 +174,7 @@ export default class Menu extends Component {
               </View>
               <View>
                 <Text style={styles.menuSwipeText}>Compliments</Text>
+                <Text style={styles.getStartedText}>You deserve beautiful words!</Text>
               </View>
             </View>
             <View
@@ -195,6 +197,7 @@ export default class Menu extends Component {
               </View>
               <View>
                 <Text style={styles.menuSwipeText}>Calm Cloud</Text>
+                <Text style={styles.getStartedText}>You're bigger than your problems!</Text>
               </View>
             </View>
             <View
@@ -217,6 +220,7 @@ export default class Menu extends Component {
               </View>
               <View>
                 <Text style={styles.menuSwipeText}>Arcade</Text>
+                <Text style={styles.getStartedText}>Let's play!</Text>
               </View>
             </View>
             <View
@@ -239,6 +243,7 @@ export default class Menu extends Component {
               </View>
               <View>
                 <Text style={styles.menuSwipeText}>Stress Test</Text>
+                <Text style={styles.getStartedText}>How stressed are you?</Text>
               </View>
             </View>
             <View
@@ -265,6 +270,7 @@ export default class Menu extends Component {
               </View>
               <View>
                 <Text style={styles.menuSwipeText}>Swag Shop</Text>
+                <Text style={styles.getStartedText}>Deck out in Upsy Gear!</Text>
               </View>
             </View>
           </Swiper>
