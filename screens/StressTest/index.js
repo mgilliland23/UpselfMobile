@@ -11,6 +11,7 @@ import {
   Animated,
 } from 'react-native';
 import dassQuestions from './questions';
+import DassResponse from '../../components/DassResponse';
 
 const win = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -33,11 +34,12 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: '30%',
     marginLeft: '15%',
-    marginRight: '15%',
+    marginRight: '20%',
     fontSize: 20,
     fontWeight: 'bold',
     alignSelf: 'center',
     justifyContent: 'center',
+    textAlign: 'center',
   },
 });
 
@@ -52,16 +54,34 @@ export default class StressTest extends Component {
       anxietyCount: 0,
       stressCount: 0,
     };
-    this.myFunction = this.myFunction.bind(this);
+    this.handleResponse = this.handleResponse.bind(this);
   }
 
-  // handleDasValue
-  myFunction() {
+  // Handle User Response
+  handleResponse(dassValue) {
     console.info("I'm being clicked");
     console.info('Before state: ' + this.state.questionIndex);
     this.setState({
       questionIndex: this.state.questionIndex + 1,
     });
+    // Determine DAS and calculate
+    switch (dassQuestions[this.state.questionIndex].das) {
+      case 'd':
+        this.setState({
+          depressionCount: this.state.depressionCount + dassValue,
+        });
+        break;
+      case 'a':
+        this.setState({
+          anxietyCount: this.state.anxietyCount + dassValue,
+        });
+        break;
+      case 's':
+        this.setState({
+          stressCount: this.state.stressCount + dassValue,
+        });
+        break;
+    }
   }
 
   render() {
@@ -80,21 +100,17 @@ export default class StressTest extends Component {
               <Text style={styles.question}>
                 {dassQuestions[this.state.questionIndex].question}
               </Text>
-              <Button title="myButton" onPress={this.myFunction}>
-                {dassQuestions[this.state.questionIndex].question}
-              </Button>
             </ImageBackground>
           </View>
         </View>
         <View />
-
-        <View
-          style={{flex: 1, justifyContent: 'center', backgroundColor: 'green'}}>
+        <View style={{flex: 1, justifyContent: 'center'}}>
           <View>
             <Text>Your Answers</Text>
           </View>
           <View>
             <Text>Answers</Text>
+            <DassResponse handleResponse={this.handleResponse} />
           </View>
         </View>
       </View>
