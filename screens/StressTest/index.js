@@ -64,7 +64,7 @@ export default class StressTest extends Component {
     this.setState({
       questionIndex: this.state.questionIndex + 1,
     });
-    // Determine DAS and calculate
+    // Determine DAS and add to each counter
     switch (dassQuestions[this.state.questionIndex].das) {
       case 'd':
         this.setState({
@@ -112,7 +112,6 @@ export default class StressTest extends Component {
             <Text>Your Answers</Text>
           </View>
           <View>
-            <Text>Answers</Text>
             <DassResponse handleResponse={this.handleResponse} />
           </View>
         </View>
