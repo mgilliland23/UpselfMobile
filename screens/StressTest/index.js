@@ -82,6 +82,9 @@ export default class StressTest extends Component {
         });
         break;
     }
+    console.info('depressionCount: ' + this.state.depressionCount);
+    console.info('anxietyCount: ' + this.state.anxietyCount);
+    console.info('stressCount: ' + this.state.stressCount);
   }
 
   render() {
