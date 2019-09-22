@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 
 export default class StressTest extends Component {
   // DASS21 Qs
-  dass_questions = [
+  dassQuestions = [
     ['I found it hard to wind down', 's'],
     ['I was aware of dryness of my mouth', 'a'],
     ['I couldn’t seem to experience any positive feeling at all', 'd'],
@@ -79,6 +79,13 @@ export default class StressTest extends Component {
   // Set State
   state = {};
 
+  dassQuestionsArr = dassQuestions.map(buttonInfo => (
+    <Button ... key={buttonInfo.id}>{buttonInfo.text}</Button>
+
+
+
+
+
   render() {
     return (
       <View style={styles.background}>
@@ -90,6 +97,9 @@ export default class StressTest extends Component {
               resizeMode={'contain'}
               width="95%">
               <Text style={styles.question}>{this.dass_questions[14][0]}</Text>
+              {/* testing map */}
+              <Text>{dassQuestionsArr}</Text>
+
             </ImageBackground>
           </View>
         </View>
