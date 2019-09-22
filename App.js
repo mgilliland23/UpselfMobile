@@ -107,7 +107,7 @@ const MainNavigator = createStackNavigator(
       },
     },
   },
-  {headerMode: 'none', initialRouteName: 'Splash'},
+  {headerMode: 'none', initialRouteName: 'StressTest'},
 );
 
 const App = createAppContainer(MainNavigator);

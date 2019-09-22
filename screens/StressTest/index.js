@@ -3,12 +3,14 @@ import {
   StyleSheet,
   View,
   Text,
+  Button,
   Image,
   ImageBackground,
   Dimensions,
   TouchableOpacity,
   Animated,
 } from 'react-native';
+import dassQuestions from './questions';
 
 const win = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -21,72 +23,51 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '97%',
     height: '100%',
+    marginLeft: '3%',
     justifyContent: 'center',
     alignSelf: 'center',
-    backgroundColor: 'yellow',
+    // backgroundColor: 'yellow',
   },
   question: {
     flex: 1,
     width: '100%',
     marginTop: '30%',
-    marginLeft: '10%',
-    marginRight: '5%',
+    marginLeft: '15%',
+    marginRight: '15%',
     fontSize: 20,
     fontWeight: 'bold',
     alignSelf: 'center',
+    justifyContent: 'center',
   },
 });
 
 export default class StressTest extends Component {
-  // DASS21 Qs
-  dassQuestions = [
-    ['I found it hard to wind down', 's'],
-    ['I was aware of dryness of my mouth', 'a'],
-    ['I couldn’t seem to experience any positive feeling at all', 'd'],
-    [
-      'I experienced breathing difficulty (e.g. excessively rapid breathing, breathlessness in the absence of physical exertion)',
-      'a',
-    ],
-    ['I found it difficult to work up the initiative to do things', 'd'],
-    ['I tended to over-react to situations', 's'],
-    ['I experienced trembling', 'a'],
-    ['I felt that I was using a lot of nervous energy', 's'],
-    ['I was worried about situations in which I might panic', 'a'],
-    ['I felt that I had nothing to look forward to', 'd'],
-    ['I found myself getting agitated', 's'],
-    ['I found it difficult to relax', 's'],
-    ['I felt down-hearted and blue', 'd'],
-    [
-      'I was intolerant of anything that kept me from getting on with what I was doing',
-      's',
-    ],
-    ['I felt I was close to panic', 'a'],
-    ['I was unable to become enthusiastic about anything', 'd'],
-    ['I felt I wasn’t worth much as a person', 'd'],
-    ['I felt that I was rather touchy', 's'],
-    ['I sensed my heart rate increase or miss a beat', 'a'],
-    ['I felt scared without any good reason', 'a'],
-    ['I felt that life was meaningless', 'd'],
-    ,
-  ];
-
-  // Initialize vars
-  questionCount = 0;
-  depressionCount = 0;
-  anxietyCount = 0;
-  stressCount = 0;
-
   // Set State
-  state = {};
 
-  dassQuestionsArr = dassQuestions.map(buttonInfo => (
-    <Button ... key={buttonInfo.id}>{buttonInfo.text}</Button>
+  constructor(props) {
+    super(props);
+    this.state = {
+      questionIndex: 0,
+      depressionCount: 0,
+      anxietyCount: 0,
+      stressCount: 0,
+    };
+    this.myFunction = this.myFunction.bind(this);
+  }
 
-
-
-
+  // handleDasValue
+  myFunction() {
+    console.info("I'm being clicked");
+    console.info('Before state: ' + this.state.questionIndex);
+    this.setState({
+      questionIndex: this.state.questionIndex + 1,
+    });
+  }
 
   render() {
+    console.log(dassQuestions[this.state.questionIndex].question);
+    console.log(Object.keys(dassQuestions).length);
+
     return (
       <View style={styles.background}>
         <View style={{flex: 1, justifyContent: 'center'}}>
@@ -96,10 +77,12 @@ export default class StressTest extends Component {
               source={require('../../assets/images/stresstest/upsyDABss.png')}
               resizeMode={'contain'}
               width="95%">
-              <Text style={styles.question}>{this.dass_questions[14][0]}</Text>
-              {/* testing map */}
-              <Text>{dassQuestionsArr}</Text>
-
+              <Text style={styles.question}>
+                {dassQuestions[this.state.questionIndex].question}
+              </Text>
+              <Button title="myButton" onPress={this.myFunction}>
+                {dassQuestions[this.state.questionIndex].question}
+              </Button>
             </ImageBackground>
           </View>
         </View>
