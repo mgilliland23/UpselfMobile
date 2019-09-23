@@ -87,15 +87,21 @@ export default class StressTest extends Component {
       console.info('anxietyCount: ' + this.state.anxietyCount);
       console.info('stressCount: ' + this.state.stressCount);
     } else {
+      // If all questions are answered, double counts and get results
+      this.setState({
+        depressionCount: this.state.depressionCount * 2,
+        anxietyCount: this.state.anxietyCount * 2,
+        stressCount: this.state.stressCount * 2,
+      });
       this.getResults();
     }
   }
 
   // Calculate results
   getResults() {
-    console.info(this.state.depressionCount);
-    console.info(this.state.anxietyCount);
-    console.info(this.state.stressCount);
+    console.info('double results for depressionCount: ' + this.state.depressionCount);
+    console.info('double results for anxietyCount: ' + this.state.anxietyCount);
+    console.info('double results for stressCount: ' + this.state.stressCount);
   }
 
   render() {
