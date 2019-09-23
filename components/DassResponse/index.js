@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
   buttons: {
     flex: 1,
     marginTop: 10,
-    paddingTop: 25,
-    paddingBottom: 25,
+    paddingTop: 20,
+    paddingBottom: 20,
     marginLeft: 30,
     marginRight: 30,
     borderRadius: 10,
@@ -18,6 +18,9 @@ const styles = StyleSheet.create({
   },
   responseText: {
     color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
 });
 
@@ -28,7 +31,7 @@ export default class DassResponse extends Component {
       <View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
-            style={[styles.buttons, {backgroundColor: 'lightgreen'}]}
+            style={[styles.buttons, {backgroundColor: 'green'}]}
             onPress={() => this.props.handleResponse(0)}>
             <Text style={styles.responseText}>Does not apply to me at all</Text>
           </TouchableOpacity>
@@ -42,7 +45,7 @@ export default class DassResponse extends Component {
         </View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
-            style={[styles.buttons, {backgroundColor: 'yellow'}]}
+            style={[styles.buttons, {backgroundColor: 'orange'}]}
             onPress={() => this.props.handleResponse(2)}>
             <Text style={styles.responseText}>
               Applies to me good amount of times
