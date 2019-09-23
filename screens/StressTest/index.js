@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
 
 export default class StressTest extends Component {
   // Set State
-
   constructor(props) {
     super(props);
     this.state = {
