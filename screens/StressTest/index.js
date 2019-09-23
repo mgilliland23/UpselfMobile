@@ -60,30 +60,42 @@ export default class StressTest extends Component {
   handleResponse(dassValue) {
     console.info("I'm being clicked");
     console.info('Before state: ' + this.state.questionIndex);
-    this.setState({
-      questionIndex: this.state.questionIndex + 1,
-    });
-    // Determine DAS and add to each counter
-    switch (dassQuestions[this.state.questionIndex].das) {
-      case 'd':
-        this.setState({
-          depressionCount: this.state.depressionCount + dassValue,
-        });
-        break;
-      case 'a':
-        this.setState({
-          anxietyCount: this.state.anxietyCount + dassValue,
-        });
-        break;
-      case 's':
-        this.setState({
-          stressCount: this.state.stressCount + dassValue,
-        });
-        break;
+    // Check for # of questions
+    if (this.state.questionIndex < Object.keys(dassQuestions).length - 1) {
+      this.setState({
+        questionIndex: this.state.questionIndex + 1,
+      });
+      // Determine DAS and add to each counter
+      switch (dassQuestions[this.state.questionIndex].das) {
+        case 'd':
+          this.setState({
+            depressionCount: this.state.depressionCount + dassValue,
+          });
+          break;
+        case 'a':
+          this.setState({
+            anxietyCount: this.state.anxietyCount + dassValue,
+          });
+          break;
+        case 's':
+          this.setState({
+            stressCount: this.state.stressCount + dassValue,
+          });
+          break;
+      }
+      console.info('depressionCount: ' + this.state.depressionCount);
+      console.info('anxietyCount: ' + this.state.anxietyCount);
+      console.info('stressCount: ' + this.state.stressCount);
+    } else {
+      this.getResults();
     }
-    console.info('depressionCount: ' + this.state.depressionCount);
-    console.info('anxietyCount: ' + this.state.anxietyCount);
-    console.info('stressCount: ' + this.state.stressCount);
+  }
+
+  // Calculate results
+  getResults() {
+    console.info(this.state.depressionCount);
+    console.info(this.state.anxietyCount);
+    console.info(this.state.stressCount);
   }
 
   render() {
@@ -106,9 +118,17 @@ export default class StressTest extends Component {
           </View>
         </View>
         <View />
-        <View style={{flex: 1, justifyContent: 'center'}}>
+        <View style={{flex: 1, justifyContent: 'center', marginBottom: '8%'}}>
           <View>
-            <Text>Your Answers</Text>
+            <Text
+              style={{
+                fontSize: 20,
+                textAlign: 'center',
+                fontStyle: 'italic',
+                marginBottom: '5%',
+              }}>
+              How relevant is this statement?
+            </Text>
           </View>
           <View>
             <DassResponse handleResponse={this.handleResponse} />
