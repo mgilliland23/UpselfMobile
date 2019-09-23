@@ -10,8 +10,11 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     marginRight: 30,
     borderRadius: 10,
-    borderWidth: 2,
+    // borderWidth: 2,
     borderColor: '#fff',
+  },
+  responseText: {
+    color: 'white',
   },
 });
 
@@ -21,29 +24,31 @@ export default class DassResponse extends Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity
-          style={[styles.buttons, {backgroundColor: 'blue'}]}
+          style={[styles.buttons, {backgroundColor: 'lightgreen'}]}
           onPress={() => this.props.handleResponse(0)}>
-          <Text style={{color: 'white'}}>Does not apply to me at all</Text>
+          <Text style={styles.responseText}>Does not apply to me at all</Text>
           {/* <Button title="Does not apply to me at all" /> */}
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.buttons, {backgroundColor: 'green'}]}
+          style={[styles.buttons, {backgroundColor: '#6DCEF4'}]}
           onPress={() => this.props.handleResponse(1)}>
-          <Text style={{color: 'white'}}>Applies to me sometimes</Text>
+          <Text style={styles.responseText}>Applies to me sometimes</Text>
           {/* <Button title="Does not apply to me at all" /> */}
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.buttons, {backgroundColor: 'yellow'}]}
           onPress={() => this.props.handleResponse(2)}>
-          <Text style={{color: 'white'}}>
+          <Text style={styles.responseText}>
             Applies to me good amount of times
           </Text>
           {/* <Button title="Does not apply to me at all" /> */}
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.buttons, {backgroundColor: 'pink'}]}
+          style={[styles.buttons, {backgroundColor: '#F46DCE'}]}
           onPress={() => this.props.handleResponse(3)}>
-          <Text style={{color: 'white'}}>Applies to me most of the time</Text>
+          <Text style={styles.responseText}>
+            Applies to me most of the time
+          </Text>
           {/* <Button title="Does not apply to me at all" /> */}
         </TouchableOpacity>
         {/* <Button
