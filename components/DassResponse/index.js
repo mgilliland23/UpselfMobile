@@ -48,7 +48,7 @@ export default class DassResponse extends Component {
             style={[styles.buttons, {backgroundColor: 'orange'}]}
             onPress={() => this.props.handleResponse(2)}>
             <Text style={styles.responseText}>
-              Applies to me good amount of times
+              Applies to me a good amount of time
             </Text>
           </TouchableOpacity>
         </View>

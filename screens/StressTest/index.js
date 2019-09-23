@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import dassQuestions from './questions';
 import DassResponse from '../../components/DassResponse';
+import DassResults from '../../components/DassResults';
 
 const win = Dimensions.get('window');
 const styles = StyleSheet.create({
@@ -52,6 +53,7 @@ export default class StressTest extends Component {
       depressionCount: 0,
       anxietyCount: 0,
       stressCount: 0,
+      // showModal: false,
     };
     this.handleResponse = this.handleResponse.bind(this);
   }
