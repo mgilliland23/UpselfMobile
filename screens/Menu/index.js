@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
 });
 
-var counterInterval = 4;
+// var counterInterval = 4;
 
 export default class Menu extends Component {
   // state = {
@@ -233,7 +233,7 @@ export default class Menu extends Component {
               }}>
               <View>
                 <TouchableOpacity
-                  onPress={() => this.props.navigation.navigate('')}>
+                  onPress={() => this.props.navigation.navigate('StressTest')}>
                   <Image
                     style={styles.upsyImg}
                     source={require('../../assets/images/menu_icons/stresstest.png')}

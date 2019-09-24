@@ -14,6 +14,7 @@ import Menu from './screens/Menu';
 import Memory from './screens/Memory';
 import Compliment from './screens/ComplimentChat';
 import Splash from './screens/SplashScreen';
+import StressTest from './screens/StressTest';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
@@ -97,8 +98,16 @@ const MainNavigator = createStackNavigator(
         activeColor: '#6bccf3',
       },
     },
+    StressTest: {
+      screen: StressTest,
+      navigationOptions: {
+        tabBarVisible: false,
+        tabBarColor: '#6bccf3',
+        activeColor: '#6bccf3',
+      },
+    },
   },
-  {headerMode: 'none', initialRouteName: 'Splash'},
+  {headerMode: 'none', initialRouteName: 'StressTest'},
 );
 
 const App = createAppContainer(MainNavigator);
