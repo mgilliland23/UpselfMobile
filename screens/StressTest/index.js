@@ -30,18 +30,19 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     // backgroundColor: 'yellow',
   },
-  question: {
+  questionContainer: {
     flex: 1,
-    width: '100%',
-    marginTop: '30%',
-    marginLeft: '15%',
-    marginRight: '20%',
-    fontSize: 20,
-    fontWeight: 'bold',
+    flexDirection: 'column',
+    display: 'flex',
+    height: 250,
+    width: 250,
+    marginLeft: 35,
     alignSelf: 'center',
     justifyContent: 'center',
     textAlign: 'center',
+    alignItems: 'center',
   },
+  question: {fontSize: 20, textAlign: 'center'}
 });
 
 export default class StressTest extends Component {
@@ -53,6 +54,7 @@ export default class StressTest extends Component {
       depressionCount: 0,
       anxietyCount: 0,
       stressCount: 0,
+      buttonCol: ['#6bccf3', '#936df4', '#6d8bf4', '#6de5f4'],
       // showModal: false,
     };
     this.handleResponse = this.handleResponse.bind(this);
@@ -88,6 +90,9 @@ export default class StressTest extends Component {
       console.info('depressionCount: ' + this.state.depressionCount);
       console.info('anxietyCount: ' + this.state.anxietyCount);
       console.info('stressCount: ' + this.state.stressCount);
+
+      // Change button colors
+      this.changeBtnCol();
     } else {
       // If all questions are answered, double counts and get results
       this.setState({
@@ -98,6 +103,9 @@ export default class StressTest extends Component {
       this.getResults();
     }
   }
+  // Button Colors
+  // changeBtnCol() {
+  // }
 
   // Calculate results
   getResults() {
@@ -119,27 +127,22 @@ export default class StressTest extends Component {
               source={require('../../assets/images/stresstest/upsyDABss.png')}
               resizeMode={'contain'}
               width="95%">
-              <Text style={styles.question}>
-                {dassQuestions[this.state.questionIndex].question}
-              </Text>
+              <View style={styles.questionContainer}>
+                <Text
+                  style={{fontWeight: 'bold', paddingBottom: 5, marginLeft: 50, fontSize: 17, width: 300}}>
+                  How relevant is this statement?
+                </Text>
+                <Text style={styles.question}>
+                  {dassQuestions[this.state.questionIndex].question}
+                </Text>
+              </View>
             </ImageBackground>
           </View>
         </View>
         <View />
-        <View style={{flex: 1, justifyContent: 'center', marginBottom: '8%'}}>
+        <View style={{flex: 1, justifyContent: 'center', marginBottom: '10%'}}>
           <View>
-            <Text
-              style={{
-                fontSize: 20,
-                textAlign: 'center',
-                fontStyle: 'italic',
-                marginBottom: '5%',
-              }}>
-              How relevant is this statement?
-            </Text>
-          </View>
-          <View>
-            <DassResponse handleResponse={this.handleResponse} />
+            <DassResponse buttonCol={this.state.buttonCol[0]} handleResponse={this.handleResponse} />
           </View>
         </View>
       </View>
