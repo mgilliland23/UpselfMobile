@@ -55,6 +55,7 @@ export default class StressTest extends Component {
       depressionCount: 0,
       anxietyCount: 0,
       stressCount: 0,
+      questionAnswered: 0,
       buttonClicked: false,
       buttonCol: ['#6bccf3', '#936df4', '#6d8bf4', '#6de5f4'],
       showResultsModal: false,
@@ -75,87 +76,172 @@ export default class StressTest extends Component {
     }, 500);
   }
 
+  // Button Colors
+  // changeBtnCol() {
+  //   var firstCol = this.buttonCol.shift();
+  //   console.info(firstCol);
+  //   this.buttonCol.push(firstCol);
+  //   console.info(this.buttonCol);
+  //   this.setState({
+  //     buttonCol: this.buttonCol,
+  //   });
+  // }
+
   // Handle User Response
   handleResponse(dassValue) {
     console.info("I'm being clicked");
-    console.info('Before state: ' + this.state.questionIndex);
-    // Check for # of questions
-    if (this.state.questionIndex < Object.keys(dassQuestions).length - 1) {
-      this.setState({
-        questionIndex: this.state.questionIndex + 1,
-      });
-      // Determine DAS and add to each counter
-      switch (dassQuestions[this.state.questionIndex].das) {
-        case 'd':
+    this.setState(
+      {
+        questionAnswered: this.state.questionAnswered + 1,
+      },
+      () => {
+        if (this.state.questionIndex < dassQuestions.length) {
+          console.info('Click Number:' + this.state.questionAnswered);
+          // Increment index of array
           this.setState({
-            depressionCount: this.state.depressionCount + dassValue,
+            questionIndex: this.state.questionIndex + 1,
           });
-          break;
-        case 'a':
-          this.setState({
-            anxietyCount: this.state.anxietyCount + dassValue,
-          });
-          break;
-        case 's':
-          this.setState({
-            stressCount: this.state.stressCount + dassValue,
-          });
-          break;
-      }
-      console.info('depressionCount: ' + this.state.depressionCount);
-      console.info('anxietyCount: ' + this.state.anxietyCount);
-      console.info('stressCount: ' + this.state.stressCount);
-
-      // Change button colors
-      //   this.changeBtnCol();
-    } else {
-      // If all questions are answered, double counts and get results
-      this.setState({
-        depressionCount: this.state.depressionCount * 2,
-        anxietyCount: this.state.anxietyCount * 2,
-        stressCount: this.state.stressCount * 2,
-      });
-      this.getResults();
-      this.resetStates();
-    }
+          // Determine DAS and add to each counter
+          switch (dassQuestions[this.state.questionIndex].das) {
+            case 'd':
+              this.setState(
+                {
+                  depressionCount: this.state.depressionCount + dassValue,
+                },
+                () => {
+                  console.info(
+                    'depressionCount: ' + this.state.depressionCount,
+                  );
+                  if (this.state.questionAnswered === dassQuestions.length) {
+                    this.getResults();
+                  }
+                },
+              );
+              break;
+            case 'a':
+              this.setState(
+                {
+                  anxietyCount: this.state.anxietyCount + dassValue,
+                },
+                () => {
+                  console.info('anxietyCount: ' + this.state.anxietyCount);
+                  if (this.state.questionAnswered === dassQuestions.length) {
+                    this.getResults();
+                  }
+                },
+              );
+              break;
+            case 's':
+              this.setState(
+                {
+                  stressCount: this.state.stressCount + dassValue,
+                },
+                () => {
+                  console.info('stressCount: ' + this.state.stressCount);
+                  if (this.state.questionAnswered === dassQuestions.length) {
+                    this.getResults();
+                  }
+                },
+              );
+              break;
+          }
+          // Change button colors
+          // this.changeBtnCol();
+        } else {
+          console.info('ELSE');
+        }
+      },
+    );
   }
-  // Button Colors
-  // changeBtnCol() {
-  // }
 
   // Calculate results
   getResults() {
-    this.setState({
-      showResultsModal: true,
-    });
-    // <DassResults show={this.state.show} />;
-    console.info(
-      'double results for depressionCount: ' + this.state.depressionCount,
+    this.setState(
+      {
+        // If all questions are answered, double counts and get results
+        depressionCount: this.state.depressionCount * 2,
+        anxietyCount: this.state.anxietyCount * 2,
+        stressCount: this.state.stressCount * 2,
+      },
+      () => {
+        this.setState({
+          showResultsModal: true,
+        });
+        console.info(
+          'double results for depressionCount: ' + this.state.depressionCount,
+        );
+        console.info('double results for anxietyCount: ' + this.state.anxietyCount);
+        console.info('double results for stressCount: ' + this.state.stressCount);
+      },
     );
-    console.info('double results for anxietyCount: ' + this.state.anxietyCount);
-    console.info('double results for stressCount: ' + this.state.stressCount);
   }
 
+  calculate = value => {
+    if (value > 10) {
+      return 'severe';
+    } else {
+      return 'mild';
+    }
+  };
+
   render() {
-    console.log(dassQuestions[this.state.questionIndex].question);
+    // console.log(dassQuestions[this.state.questionIndex].question);
     console.log(Object.keys(dassQuestions).length);
 
     return (
       <View style={styles.background}>
         <Modal
           visible={this.state.showResultsModal}
-          animationType="slide"
+          // animationType="slide"
           onRequestClose={() => console.info('this is a close req')}>
-          <View style={{flex: 1, justifyContent: 'space-around'}}>
-            <Text>DAS Scores</Text>
-            <TouchableOpacity
-              onPress={() => {
-                this.setState({
-                  showResultsModal: false,
-                });
-              }}>
-              <Text>Close</Text>
-            </TouchableOpacity>
+          <View
+            style={{
+              flex: 1,
+              // justifyContent: 'space-around',
+              // alignSelf: 'center',
+              flexDirection: 'column',
+            }}>
+            <View style={{flex: 1, backgroundColor: 'lightblue'}}>
+              <Text
+                style={{
+                  marginTop: 55,
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                  fontSize: 20,
+                }}>
+                DAS Scores
+              </Text>
+            </View>
+            <View style={{flex: 2, backgroundColor: 'pink'}}>
+              <Text>D</Text>
+              <Text>
+                You are showing {this.calculate(this.state.depressionCount)}{' '}
+                signs of Depression
+              </Text>
+              {this.calculate(this.state.depressionCount) === 'mild' && (
+                <TouchableOpacity>
+                  <Text>Button</Text>
+                </TouchableOpacity>
+              )}
+            </View>
+            <View style={{flex: 2, backgroundColor: 'lightyellow'}}>
+              <Text>A</Text>
+              <Text>You are showing KEY signs of Anxiety</Text>
+            </View>
+            <View style={{flex: 2, backgroundColor: 'lightgreen'}}>
+              <Text>S</Text>
+              <Text>You are showing signs of Stress</Text>
+            </View>
+            <View style={{flex: 1, backgroundColor: 'white'}}>
+              <TouchableOpacity
+                onPress={() => {
+                  this.setState({
+                    showResultsModal: false,
+                  });
+                }}>
+                <Text>Close</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </Modal>
 
@@ -178,7 +264,9 @@ export default class StressTest extends Component {
                   How relevant is this statement?
                 </Text>
                 <Text style={styles.question}>
-                  {dassQuestions[this.state.questionIndex].question}
+                  {dassQuestions[this.state.questionIndex]
+                    ? dassQuestions[this.state.questionIndex].question
+                    : null}
                 </Text>
               </View>
             </ImageBackground>
