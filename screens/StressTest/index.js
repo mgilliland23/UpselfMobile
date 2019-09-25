@@ -170,13 +170,19 @@ export default class StressTest extends Component {
         console.info(
           'double results for depressionCount: ' + this.state.depressionCount,
         );
-        console.info('double results for anxietyCount: ' + this.state.anxietyCount);
-        console.info('double results for stressCount: ' + this.state.stressCount);
+        console.info(
+          'double results for anxietyCount: ' + this.state.anxietyCount,
+        );
+        console.info(
+          'double results for stressCount: ' + this.state.stressCount,
+        );
+        // Reset all states
+        this.resetStates();
       },
     );
   }
 
-  calculate = value => {
+  calculateTotal = value => {
     if (value > 10) {
       return 'severe';
     } else {
@@ -197,8 +203,6 @@ export default class StressTest extends Component {
           <View
             style={{
               flex: 1,
-              // justifyContent: 'space-around',
-              // alignSelf: 'center',
               flexDirection: 'column',
             }}>
             <View style={{flex: 1, backgroundColor: 'lightblue'}}>
@@ -206,40 +210,93 @@ export default class StressTest extends Component {
                 style={{
                   marginTop: 55,
                   textAlign: 'center',
-                  fontWeight: 'bold',
-                  fontSize: 20,
+                  fontSize: 30,
                 }}>
-                DAS Scores
+                DAS RESULTS
               </Text>
             </View>
-            <View style={{flex: 2, backgroundColor: 'pink'}}>
-              <Text>D</Text>
-              <Text>
-                You are showing {this.calculate(this.state.depressionCount)}{' '}
-                signs of Depression
+            <View
+              style={{
+                flex: 2,
+                backgroundColor: 'pink',
+              }}>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  fontSize: 25,
+                  fontWeight: 'bold',
+                  marginTop: 20,
+                }}>
+                D
               </Text>
-              {this.calculate(this.state.depressionCount) === 'mild' && (
+              <Text style={{textAlign: 'center'}}>
+                {this.calculateTotal(this.state.depressionCount)} in the
+                Depression Scale
+              </Text>
+              {this.calculateTotal(this.state.depressionCount) === 'mild' && (
                 <TouchableOpacity>
                   <Text>Button</Text>
                 </TouchableOpacity>
               )}
             </View>
-            <View style={{flex: 2, backgroundColor: 'lightyellow'}}>
-              <Text>A</Text>
-              <Text>You are showing KEY signs of Anxiety</Text>
+            <View
+              style={{
+                flex: 2,
+                backgroundColor: 'lightyellow',
+              }}>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  fontSize: 25,
+                  fontWeight: 'bold',
+                  marginTop: 20,
+                }}>
+                A
+              </Text>
+              <Text style={{textAlign: 'center'}}>
+                {this.calculateTotal(this.state.anxietyCount)} in the Anxiety
+                Scale
+              </Text>
             </View>
-            <View style={{flex: 2, backgroundColor: 'lightgreen'}}>
-              <Text>S</Text>
-              <Text>You are showing signs of Stress</Text>
+            <View
+              style={{
+                flex: 2,
+                backgroundColor: 'lightgreen',
+              }}>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  fontSize: 25,
+                  fontWeight: 'bold',
+                  marginTop: 20,
+                }}>
+                S
+              </Text>
+              <Text style={{textAlign: 'center'}}>
+                {this.calculateTotal(this.state.stressCount)} in the Stress
+                Scale
+              </Text>
             </View>
-            <View style={{flex: 1, backgroundColor: 'white'}}>
+            <View style={{flex: 1}}>
               <TouchableOpacity
+                style={{
+                  backgroundColor: 'grey',
+                  marginLeft: 150,
+                  marginRight: 150,
+                }}
                 onPress={() => {
                   this.setState({
                     showResultsModal: false,
                   });
                 }}>
-                <Text>Close</Text>
+                <Text
+                  style={{
+                    fontWeight: 'bold',
+                    fontSize: 25,
+                    textAlign: 'center',
+                  }}>
+                  OK
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
