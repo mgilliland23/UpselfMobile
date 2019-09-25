@@ -53,6 +53,18 @@ const BottomBarNavigator = createMaterialBottomTabNavigator(
         tabBarIcon: <EnIcon name="cloud" size={22} color="#fff" />,
       },
     },
+
+    StressTest: {
+      screen: StressTest,
+
+      navigationOptions: {
+        tabBarLabel: 'StressTest',
+        tabBarColor: '#f46d8b',
+        activeColor: '#fff',
+        tabBarIcon: <Icon name="question" size={22} color="#fff" />,
+      },
+    },
+
     Memory: {
       screen: Memory,
 

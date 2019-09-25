@@ -65,26 +65,8 @@ export default class DassResponse extends Component {
             </Text>
           </TouchableOpacity>
         </View>
-        {/* <Button
-          title="Does not apply to me at all"
-          value={0}
-          onPress={() => this.props.handleResponse(0)}
-        /> */}
-        {/* <Button
-          title="Applies to me sometimes"
-          value={1}
-          onPress={() => this.props.handleResponse(1)}
-        /> */}
-        {/* <Button
-          title="Applies to me good amount of times"
-          value={2}
-          onPress={() => this.props.handleResponse(2)}
-        /> */}
-        {/* <Button
-          title="Applies to me most of the time"
-          value={3}
-          onPress={() => this.props.handleResponse(3)}
-        /> */}
+        {/* { this.state.buttonClicked ? <View/> :  */}
+        {/* } */}
       </View>
     );
   }

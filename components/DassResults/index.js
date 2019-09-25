@@ -5,10 +5,14 @@ const styles = StyleSheet.create({});
 
 export default class DassResults extends Component {
   render() {
-    return 
-        <View>
-        
-            
-        </View>;
+    return (
+      <View>
+        <Modal>
+          <View>
+            <Text>Here are your scores</Text>
+          </View>
+        </Modal>
+      </View>
+    );
   }
 }

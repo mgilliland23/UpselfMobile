@@ -9,6 +9,7 @@ import {
   Dimensions,
   TouchableOpacity,
   Animated,
+  Modal,
 } from 'react-native';
 import dassQuestions from './questions';
 import DassResponse from '../../components/DassResponse';
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignItems: 'center',
   },
-  question: {fontSize: 20, textAlign: 'center'}
+  question: {fontSize: 20, textAlign: 'center'},
 });
 
 export default class StressTest extends Component {
@@ -54,10 +55,24 @@ export default class StressTest extends Component {
       depressionCount: 0,
       anxietyCount: 0,
       stressCount: 0,
+      buttonClicked: false,
       buttonCol: ['#6bccf3', '#936df4', '#6d8bf4', '#6de5f4'],
-      // showModal: false,
+      showResultsModal: false,
     };
     this.handleResponse = this.handleResponse.bind(this);
+  }
+
+  // Reset States once results modal pops up
+  resetStates() {
+    setTimeout(() => {
+      this.setState({
+        questionIndex: 0,
+        depressionCount: 0,
+        anxietyCount: 0,
+        stressCount: 0,
+        buttonClicked: false,
+      });
+    }, 500);
   }
 
   // Handle User Response
@@ -92,7 +107,7 @@ export default class StressTest extends Component {
       console.info('stressCount: ' + this.state.stressCount);
 
       // Change button colors
-      this.changeBtnCol();
+      //   this.changeBtnCol();
     } else {
       // If all questions are answered, double counts and get results
       this.setState({
@@ -101,6 +116,7 @@ export default class StressTest extends Component {
         stressCount: this.state.stressCount * 2,
       });
       this.getResults();
+      this.resetStates();
     }
   }
   // Button Colors
@@ -109,7 +125,13 @@ export default class StressTest extends Component {
 
   // Calculate results
   getResults() {
-    console.info('double results for depressionCount: ' + this.state.depressionCount);
+    this.setState({
+      showResultsModal: true,
+    });
+    // <DassResults show={this.state.show} />;
+    console.info(
+      'double results for depressionCount: ' + this.state.depressionCount,
+    );
     console.info('double results for anxietyCount: ' + this.state.anxietyCount);
     console.info('double results for stressCount: ' + this.state.stressCount);
   }
@@ -120,6 +142,23 @@ export default class StressTest extends Component {
 
     return (
       <View style={styles.background}>
+        <Modal
+          visible={this.state.showResultsModal}
+          animationType="slide"
+          onRequestClose={() => console.info('this is a close req')}>
+          <View style={{flex: 1, justifyContent: 'space-around'}}>
+            <Text>DAS Scores</Text>
+            <TouchableOpacity
+              onPress={() => {
+                this.setState({
+                  showResultsModal: false,
+                });
+              }}>
+              <Text>Close</Text>
+            </TouchableOpacity>
+          </View>
+        </Modal>
+
         <View style={{flex: 1, justifyContent: 'center'}}>
           <View style={{flex: 1, justifyContent: 'center'}}>
             <ImageBackground
@@ -129,7 +168,13 @@ export default class StressTest extends Component {
               width="95%">
               <View style={styles.questionContainer}>
                 <Text
-                  style={{fontWeight: 'bold', paddingBottom: 5, marginLeft: 50, fontSize: 17, width: 300}}>
+                  style={{
+                    fontWeight: 'bold',
+                    paddingBottom: 5,
+                    marginLeft: 50,
+                    fontSize: 17,
+                    width: 300,
+                  }}>
                   How relevant is this statement?
                 </Text>
                 <Text style={styles.question}>
@@ -142,7 +187,10 @@ export default class StressTest extends Component {
         <View />
         <View style={{flex: 1, justifyContent: 'center', marginBottom: '10%'}}>
           <View>
-            <DassResponse buttonCol={this.state.buttonCol[0]} handleResponse={this.handleResponse} />
+            <DassResponse
+              buttonCol={this.state.buttonCol[0]}
+              handleResponse={this.handleResponse}
+            />
           </View>
         </View>
       </View>
