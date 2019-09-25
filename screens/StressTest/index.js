@@ -43,10 +43,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignItems: 'center',
   },
+  upsyImg: {
+    width: 100,
+    height: 100,
+    alignSelf: 'center',
+    justifyContent: 'center',
+  },
   question: {fontSize: 20, textAlign: 'center'},
 });
 
 export default class StressTest extends Component {
+  static navigationOptions = {
+    header: null,
+  };
+
   // Set State
   constructor(props) {
     super(props);
@@ -176,19 +186,72 @@ export default class StressTest extends Component {
         console.info(
           'double results for stressCount: ' + this.state.stressCount,
         );
-        // Reset all states
+        // Reset all states // LOOK INTO THIS
         this.resetStates();
       },
     );
   }
 
-  calculateTotal = value => {
-    if (value > 10) {
-      return 'severe';
+  // Depression Count
+  calculateDepressionTotal = value => {
+    if (value <= 9) {
+      return 'Normal';
+    } else if (value >= 10 && value <= 13) {
+      return 'Mild';
+    } else if (value >= 14 && value <= 20) {
+      return 'Moderate';
+    } else if (value >= 21 && value <= 27) {
+      return 'Severe';
     } else {
-      return 'mild';
+      return 'Extremely Severe';
     }
   };
+
+  // Anxiety Count
+  calculateAnxietyTotal = value => {
+    if (value <= 7) {
+      return 'Normal';
+    } else if (value >= 8 && value <= 9) {
+      return 'Mild';
+    } else if (value >= 10 && value <= 14) {
+      return 'Moderate';
+    } else if (value >= 15 && value <= 19) {
+      return 'Severe';
+    } else {
+      return 'Extremely Severe';
+    }
+  };
+
+  // Stress Count
+  calculateStressTotal = value => {
+    if (value <= 14) {
+      return 'Normal';
+    } else if (value >= 15 && value <= 18) {
+      return 'Mild';
+    } else if (value >= 19 && value <= 25) {
+      return 'Moderate';
+    } else if (value >= 26 && value <= 33) {
+      return 'Severe';
+    } else {
+      return 'Extremely Severe';
+    }
+  };
+
+  // Direct to Upsy
+  // renderButton = result => {
+  //   switch (result) {
+  //     case 'Normal':
+  //       return null;
+  //     case 'Mild':
+  //       return null;
+  //     case 'Moderate':
+  //       return 'Upsy';
+  //     case 'Severe':
+  //       return 'Upsy';
+  //     case 'Extremely Severe':
+  //       return 'Upsy';
+  //   }
+  // };
 
   render() {
     // console.log(dassQuestions[this.state.questionIndex].question);
@@ -198,14 +261,14 @@ export default class StressTest extends Component {
       <View style={styles.background}>
         <Modal
           visible={this.state.showResultsModal}
-          // animationType="slide"
+          animationType="slide"
           onRequestClose={() => console.info('this is a close req')}>
           <View
             style={{
               flex: 1,
               flexDirection: 'column',
             }}>
-            <View style={{flex: 1, backgroundColor: 'lightblue'}}>
+            <View style={{flex: 1}}>
               <Text
                 style={{
                   marginTop: 55,
@@ -218,7 +281,7 @@ export default class StressTest extends Component {
             <View
               style={{
                 flex: 2,
-                backgroundColor: 'pink',
+                // backgroundColor: 'pink',
               }}>
               <Text
                 style={{
@@ -227,22 +290,44 @@ export default class StressTest extends Component {
                   fontWeight: 'bold',
                   marginTop: 20,
                 }}>
-                D
+                Depression Scale:
               </Text>
-              <Text style={{textAlign: 'center'}}>
-                {this.calculateTotal(this.state.depressionCount)} in the
-                Depression Scale
+              <Text style={{textAlign: 'center', fontSize: 20}}>
+                {this.calculateDepressionTotal(this.state.depressionCount)}
               </Text>
-              {this.calculateTotal(this.state.depressionCount) === 'mild' && (
-                <TouchableOpacity>
-                  <Text>Button</Text>
+              {this.calculateDepressionTotal(this.state.depressionCount) ===
+                'Severe' && (
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('Chat')}>
+                  <Text style={{textAlign: 'center', marginTop: 10}}>
+                    Want to share more with Upsy?
+                  </Text>
+                  <ImageBackground
+                    style={styles.upsyImg}
+                    source={require('../../assets/images/menu_icons/chat.png')}
+                    resizeMode={'contain'}
+                  />
+                </TouchableOpacity>
+              )}
+              {this.calculateDepressionTotal(this.state.depressionCount) ===
+                'Extremely Severe' && (
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('Chat')}>
+                  <Text style={{textAlign: 'center'}}>
+                    Want to share more with Upsy?
+                  </Text>
+                  <ImageBackground
+                    style={styles.upsyImg}
+                    source={require('../../assets/images/menu_icons/chat.png')}
+                    resizeMode={'contain'}
+                  />
                 </TouchableOpacity>
               )}
             </View>
             <View
               style={{
                 flex: 2,
-                backgroundColor: 'lightyellow',
+                // backgroundColor: 'lightyellow',
               }}>
               <Text
                 style={{
@@ -251,17 +336,44 @@ export default class StressTest extends Component {
                   fontWeight: 'bold',
                   marginTop: 20,
                 }}>
-                A
+                Anxiety Scale:
               </Text>
-              <Text style={{textAlign: 'center'}}>
-                {this.calculateTotal(this.state.anxietyCount)} in the Anxiety
-                Scale
+              <Text style={{textAlign: 'center', fontSize: 20}}>
+                {this.calculateAnxietyTotal(this.state.anxietyCount)}
               </Text>
+              {this.calculateAnxietyTotal(this.state.anxietyCount) ===
+                'Severe' && (
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('CalmCloud')}>
+                  <Text style={{textAlign: 'center', marginTop: 10}}>
+                    Check out our CalmCloud
+                  </Text>
+                  <ImageBackground
+                    style={styles.upsyImg}
+                    source={require('../../assets/images/menu_icons/calmcloud.png')}
+                    resizeMode={'contain'}
+                  />
+                </TouchableOpacity>
+              )}
+              {this.calculateAnxietyTotal(this.state.anxietyCount) ===
+                'Extremely Severe' && (
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('CalmCloud')}>
+                  <Text style={{textAlign: 'center'}}>
+                    Check out our CalmCloud
+                  </Text>
+                  <ImageBackground
+                    style={styles.upsyImg}
+                    source={require('../../assets/images/menu_icons/calmcloud.png')}
+                    resizeMode={'contain'}
+                  />
+                </TouchableOpacity>
+              )}
             </View>
             <View
               style={{
                 flex: 2,
-                backgroundColor: 'lightgreen',
+                // backgroundColor: 'lightgreen',
               }}>
               <Text
                 style={{
@@ -270,17 +382,43 @@ export default class StressTest extends Component {
                   fontWeight: 'bold',
                   marginTop: 20,
                 }}>
-                S
+                Stress Scale:
               </Text>
-              <Text style={{textAlign: 'center'}}>
-                {this.calculateTotal(this.state.stressCount)} in the Stress
-                Scale
+              <Text style={{textAlign: 'center', fontSize: 20}}>
+                {this.calculateStressTotal(this.state.stressCount)}
               </Text>
+              {this.calculateStressTotal(this.state.stressCount) ===
+                'Normal' && (
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('Memory')}>
+                  <Text style={{textAlign: 'center', marginTop: 10}}>
+                    Enter the Arcade Room!
+                  </Text>
+                  <ImageBackground
+                    style={styles.upsyImg}
+                    source={require('../../assets/images/menu_icons/arcade.png')}
+                    resizeMode={'contain'}
+                  />
+                </TouchableOpacity>
+              )}
+              {this.calculateStressTotal(this.state.stressCount) ===
+                'Extremely Severe' && (
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('Memory')}>
+                  <Text style={{textAlign: 'center'}}>
+                    Enter the Arcade Room!
+                  </Text>
+                  <ImageBackground
+                    style={styles.upsyImg}
+                    source={require('../../assets/images/menu_icons/arcade.png')}
+                    resizeMode={'contain'}
+                  />
+                </TouchableOpacity>
+              )}
             </View>
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, justifyContent: 'center'}}>
               <TouchableOpacity
                 style={{
-                  backgroundColor: 'grey',
                   marginLeft: 150,
                   marginRight: 150,
                 }}
@@ -292,7 +430,7 @@ export default class StressTest extends Component {
                 <Text
                   style={{
                     fontWeight: 'bold',
-                    fontSize: 25,
+                    fontSize: 20,
                     textAlign: 'center',
                   }}>
                   OK
